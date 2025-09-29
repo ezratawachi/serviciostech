@@ -149,6 +149,9 @@
         opacity: 1;
         transition: opacity 0.25s ease;
       }
+      .service-anchor {
+        scroll-margin-top: 110px;
+      }
       @keyframes float {
         0%,
         100% {
@@ -438,7 +441,7 @@
               <!-- Servicio 1 -->
               <article
                 id="servicio1"
-                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
               >
                 <header
                   class="flex flex-wrap items-center justify-between gap-4"
@@ -470,76 +473,62 @@
                 </header>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 Problema real
+                  🚨 El reto
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  La exportación manual de ventas y gastos consume horas
-                  valiosas. Cada cierre requiere limpiar datos en Excel,
-                  construir tablas y consolidar KPIs, aumentando el riesgo de
-                  errores y decisiones tardías.
+                  En muchas empresas, al cierre mensual o semanal alguien
+                  exporta ventas y gastos del ERP/POS. Esos archivos suelen
+                  traer columnas innecesarias, datos mal formateados y miles de
+                  filas. El equipo debe limpiar, consolidar y armar tablas
+                  dinámicas en Excel cada vez. Este proceso consume horas y está
+                  lleno de riesgos de error: una fórmula mal copiada puede
+                  distorsionar todo el reporte. Como resultado, la gerencia
+                  recibe la información tarde y pierde capacidad de reaccionar.
                 </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Cómo lo hago
+                  ⚡ Mi solución
                 </h4>
-                <ol
-                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Evalúo integraciones directas a Google Sheets o conectores
-                    disponibles para tu ERP/POS.
-                  </li>
-                  <li>
-                    Configuro reportes personalizados o exploto exportaciones
-                    estándar en CSV/Excel.
-                  </li>
-                  <li>
-                    Automatizo limpieza, consolidación y generación de KPIs
-                    (ventas por canal, margen, top productos).
-                  </li>
-                  <li>
-                    Entrego reportes PDF listos para gerencia en un clic, con
-                    registros de ejecución.
-                  </li>
-                </ol>
+                <p class="mt-2 text-sm text-slate-700">
+                  Transformo ese proceso en un flujo automático donde los datos
+                  llegan organizados y los reportes se generan confiables, sin
+                  repetir tareas manuales.
+                </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📑 Qué entrego
+                  📌 Ejemplos
                 </h4>
                 <ul
                   class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
                 >
-                  <li>Archivo maestro conectado a tu ERP o POS.</li>
-                  <li>Plantilla PDF “Reporte Gerencial”.</li>
-                  <li>Mini-manual (3–5 páginas) y video walkthrough.</li>
+                  <li>
+                    Supermercado que invertía 2–3 horas diarias en limpiar
+                    exportaciones del POS → ahora obtiene reportes claros en
+                    minutos.
+                  </li>
+                  <li>
+                    Empresa de retail que demoraba 2 días en su cierre mensual
+                    → ahora lo hace en menos de 2 horas con datos consistentes.
+                  </li>
                 </ul>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🔧 Qué necesito
+                  ✅ Beneficios
                 </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Exportación de prueba (CSV/Excel) y diccionario de columnas
-                  del ERP/POS.
-                </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⏱️ Tiempo de entrega
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">5 días hábiles.</p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Límites
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Una fuente de ventas y hasta 12 meses de histórico.
-                  Integración API bajo presupuesto adicional.
-                </p>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Cierres más rápidos y menos desgastantes.</li>
+                  <li>Datos confiables y libres de errores manuales.</li>
+                  <li>Decisiones oportunas basadas en información clara.</li>
+                  <li>Garantía: 50% inicial, devolución si no cumple lo esperado.</li>
+                </ul>
               </article>
 
               <!-- Servicio 2 -->
               <article
                 id="servicio2"
-                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
               >
                 <header
                   class="flex flex-wrap items-center justify-between gap-4"
@@ -571,75 +560,59 @@
                 </header>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 Problema real
+                  🚨 El reto
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Shopify o WooCommerce notifican ventas, pero tu equipo aún
-                  copia y pega información en chats. Las confirmaciones y
-                  seguimientos llegan tarde y se pierden oportunidades.
+                  Cuando llega una venta en Shopify o WooCommerce, muchos
+                  equipos todavía copian los datos del pedido y los pegan en
+                  WhatsApp para confirmar con el cliente o avisar al área de
+                  envíos. Esto genera retrasos, mensajes olvidados y mala
+                  experiencia de compra.
                 </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Cómo lo hago
+                  ⚡ Mi solución
                 </h4>
-                <ol
-                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
-                >
-                  <li>Conecto la tienda online a WhatsApp Business.</li>
-                  <li>
-                    Defino eventos clave: pedido confirmado, pago recibido,
-                    envío listo.
-                  </li>
-                  <li>Diseño mensajes automáticos claros y consistentes.</li>
-                  <li>Pruebo el flujo end-to-end y entreno a tu equipo.</li>
-                </ol>
+                <p class="mt-2 text-sm text-slate-700">
+                  Conecto tu tienda online con WhatsApp para que
+                  confirmaciones, notificaciones de pago y avisos de envío se
+                  envíen automáticamente, sin depender de la acción manual de tu
+                  equipo.
+                </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📑 Qué entrego
+                  📌 Ejemplos
                 </h4>
                 <ul
                   class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
                 >
                   <li>
-                    Flujo de integración activo entre Shopify/WooCommerce y
-                    WhatsApp.
+                    Tienda Shopify que confirmaba pedidos uno por uno → ahora
+                    cada cliente recibe confirmación instantánea.
                   </li>
                   <li>
-                    Mensajes automáticos para hasta tres eventos críticos.
+                    E-commerce WooCommerce que notificaba envíos manualmente →
+                    ahora el sistema avisa de inmediato al cliente.
                   </li>
-                  <li>Guía rápida de uso y soporte inicial.</li>
                 </ul>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🔧 Qué necesito
+                  ✅ Beneficios
                 </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Accesos de administrador a la tienda online y cuenta de
-                  WhatsApp Business.
-                </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⏱️ Tiempo de entrega
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">5–7 días hábiles.</p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Límites
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Hasta 3 eventos automáticos. No incluye múltiples números ni
-                  soporte masivo.
-                </p>
-                <p class="mt-1 text-xs italic text-slate-500">
-                  Nota: Puede existir cargo adicional del proveedor de WhatsApp
-                  (~USD $0.02 por mensaje).
-                </p>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Atención inmediata que mejora la experiencia del cliente.</li>
+                  <li>Procesos fluidos sin errores humanos.</li>
+                  <li>Más ventas cerradas gracias a comunicación rápida.</li>
+                  <li>Garantía: 50% inicial, devolución si no quedas conforme.</li>
+                </ul>
               </article>
 
               <!-- Servicio 3 -->
               <article
                 id="servicio3"
-                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
               >
                 <header
                   class="flex flex-wrap items-center justify-between gap-4"
@@ -671,68 +644,60 @@
                 </header>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 Problema real
+                  🚨 El reto
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Los aging reports existen, pero no hay seguimiento. Las
-                  alertas llegan tarde y la cobranza no se prioriza, generando
-                  retrasos en flujo de caja.
+                  Los aging reports de cuentas por cobrar existen, pero en la
+                  práctica pocos los revisan a diario. Las facturas vencidas se
+                  acumulan y el equipo de finanzas no prioriza bien a quién
+                  cobrar primero. Eso termina afectando el flujo de caja y
+                  aumenta el riesgo de morosidad.
                 </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Cómo lo hago
+                  ⚡ Mi solución
                 </h4>
-                <ol
-                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Conecto la exportación de cuentas por cobrar a Google
-                    Sheets.
-                  </li>
-                  <li>
-                    Creo tablero con segmentos 0‑30, 31‑60, 61‑90 y 90+ días.
-                  </li>
-                  <li>Configuro alertas semanales automáticas por correo.</li>
-                  <li>Incluyo plantillas de email listas para cobrar.</li>
-                </ol>
+                <p class="mt-2 text-sm text-slate-700">
+                  Creo un tablero visual que clasifica a los clientes por
+                  antigüedad de deuda y genera alertas automáticas para que el
+                  equipo sepa exactamente a quién contactar cada semana.
+                </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📑 Qué entrego
+                  📌 Ejemplos
                 </h4>
                 <ul
                   class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
                 >
-                  <li>Tablero dinámico en Google Sheets.</li>
-                  <li>Alertas semanales automáticas.</li>
-                  <li>Plantillas de cobranza profesionales.</li>
+                  <li>
+                    Distribuidor con clientes de 90+ días vencidos sin
+                    seguimiento → ahora recibe alertas semanales con la lista
+                    priorizada.
+                  </li>
+                  <li>
+                    Empresa de servicios que usaba un Excel plano sin
+                    seguimiento → ahora gestiona cobranzas con un tablero visual
+                    y recordatorios automáticos.
+                  </li>
                 </ul>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🔧 Qué necesito
+                  ✅ Beneficios
                 </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Export del reporte de antigüedad de saldos desde tu ERP o
-                  sistema contable.
-                </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⏱️ Tiempo de entrega
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">4–5 días hábiles.</p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Límites
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Hasta 5,000 facturas históricas. Integración API según
-                  alcance.
-                </p>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Mejor control del flujo de caja.</li>
+                  <li>Cobranza más ordenada y efectiva.</li>
+                  <li>Menos facturas olvidadas o atrasadas.</li>
+                  <li>Garantía: 50% inicial, devolución si no cumple el resultado.</li>
+                </ul>
               </article>
 
               <!-- Servicio 4 -->
               <article
                 id="servicio4"
-                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
               >
                 <header
                   class="flex flex-wrap items-center justify-between gap-4"
@@ -764,71 +729,59 @@
                 </header>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 Problema real
+                  🚨 El reto
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  El volumen de consultas crece más rápido que tu equipo.
-                  Responder manualmente toma horas, se pierden oportunidades y
-                  la experiencia no es consistente.
+                  Cuando el volumen de consultas crece, el equipo no alcanza a
+                  responder todo. Los clientes esperan horas para respuestas
+                  básicas (horarios, productos, estado de pedidos), lo que
+                  genera frustración y pérdida de ventas.
                 </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Cómo lo hago
+                  ⚡ Mi solución
                 </h4>
-                <ol
-                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Configuro chatbot en WhatsApp Business con flujos claros.
-                  </li>
-                  <li>
-                    Defino respuestas automáticas para preguntas frecuentes.
-                  </li>
-                  <li>Integro con Google Sheets, e‑commerce o CRM simple.</li>
-                  <li>Incluyo opción de escalar a un agente humano.</li>
-                </ol>
+                <p class="mt-2 text-sm text-slate-700">
+                  Implemento un chatbot en WhatsApp que responde de inmediato
+                  preguntas frecuentes, guía a los clientes en flujos simples y
+                  sabe cuándo pasar la conversación a un agente humano.
+                </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📑 Qué entrego
+                  📌 Ejemplos
                 </h4>
                 <ul
                   class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
                 >
-                  <li>Chatbot funcional adaptado a tu negocio.</li>
-                  <li>Flujos automáticos configurados.</li>
-                  <li>Guía rápida y soporte inicial.</li>
+                  <li>
+                    Restaurante que recibía decenas de mensajes diarios
+                    preguntando por menú y horarios → ahora esas consultas se
+                    resuelven solas.
+                  </li>
+                  <li>
+                    Tienda de tecnología que perdía ventas fuera de horario
+                    laboral → ahora atiende 24/7 y pasa lo urgente al equipo
+                    humano.
+                  </li>
                 </ul>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🔧 Qué necesito
+                  ✅ Beneficios
                 </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Cuenta de WhatsApp Business y accesos a sistemas que se
-                  integrarán.
-                </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⏱️ Tiempo de entrega
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">7–10 días hábiles.</p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Límites
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Hasta cinco flujos principales. Integraciones avanzadas o IA
-                  bajo alcance adicional.
-                </p>
-                <p class="mt-1 text-xs italic text-slate-500">
-                  Nota: Proveedores de WhatsApp Business pueden cobrar ~USD
-                  $0.02 por mensaje.
-                </p>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Respuestas inmediatas todos los días.</li>
+                  <li>Menos carga operativa para tu equipo.</li>
+                  <li>Experiencia más profesional para tus clientes.</li>
+                  <li>Garantía: 50% inicial, devolución si no quedas satisfecho.</li>
+                </ul>
               </article>
 
               <!-- Servicio 5 -->
               <article
                 id="servicio5"
-                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
               >
                 <header
                   class="flex flex-wrap items-center justify-between gap-4"
@@ -860,67 +813,299 @@
                 </header>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 Problema real
+                  🚨 El reto
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Instalar apps sin criterio vuelve lenta tu tienda y
-                  desperdicia presupuesto. Necesitas decisiones basadas en datos
-                  y reputación real.
+                  Muchos e-commerce instalan apps sin un criterio claro. Esto
+                  hace que la tienda se vuelva lenta, se pague por funciones
+                  duplicadas o se invierta en herramientas que los clientes ni
+                  usan.
                 </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Cómo lo hago
+                  ⚡ Mi solución
                 </h4>
-                <ol
-                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Analizo objetivos clave (conversiones, marketing,
-                    fidelización).
-                  </li>
-                  <li>
-                    Investigo y comparo apps de Shopify o WooCommerce según tu
-                    caso.
-                  </li>
-                  <li>Evalúo reputación, soporte, precio y compatibilidad.</li>
-                  <li>
-                    Presento las mejores opciones con recomendación priorizada.
-                  </li>
-                </ol>
+                <p class="mt-2 text-sm text-slate-700">
+                  Analizo tus objetivos y entrego un comparativo claro con las
+                  mejores opciones de apps, priorizadas por costo, beneficio y
+                  compatibilidad con tu negocio.
+                </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📑 Qué entrego
+                  📌 Ejemplos
                 </h4>
                 <ul
                   class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
                 >
-                  <li>Reporte en PDF con análisis de 3–5 apps recomendadas.</li>
                   <li>
-                    Tabla comparativa costo vs beneficio vs facilidad de uso.
+                    Tienda que tenía 10 apps instaladas, muchas inútiles → ahora
+                    solo usa 3 esenciales, reduciendo costos y mejorando
+                    velocidad.
                   </li>
-                  <li>Plan de instalación para la app más adecuada.</li>
+                  <li>
+                    E-commerce que pagaba por dos apps con funciones iguales →
+                    ahora usa una sola solución más completa y eficiente.
+                  </li>
                 </ul>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🔧 Qué necesito
+                  ✅ Beneficios
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Menos gasto en apps innecesarias.</li>
+                  <li>Mejor rendimiento de la tienda.</li>
+                  <li>Decisiones basadas en análisis, no prueba-error.</li>
+                  <li>Garantía: 50% inicial, devolución si no cumple el resultado.</li>
+                </ul>
+            </article>
+
+              <!-- Servicio 6 -->
+              <article
+                id="servicio6"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
+                  <div class="flex-1 min-w-[220px]">
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      Operaciones
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Recordatorios Automáticos en Google Sheets
+                    </h3>
+                  </div>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $180</span
+                    >
+                    <button
+                      type="button"
+                      @click="add('Recordatorios Automáticos en Google Sheets', 180)"
+                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                    >
+                      Añadir al carrito
+                    </button>
+                  </div>
+                </header>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 El reto
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Objetivos prioritarios (ventas, marketing, envíos, reseñas,
-                  velocidad).
+                  Los equipos anotan fechas clave en Google Sheets (contratos,
+                  mantenimientos, tareas), pero como nadie revisa la hoja a
+                  diario, esas fechas pasan desapercibidas. El resultado: tareas
+                  críticas vencidas y plazos incumplidos.
                 </p>
 
                 <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⏱️ Tiempo de entrega
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">3–4 días hábiles.</p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Límites
+                  ⚡ Mi solución
                 </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Hasta cinco necesidades por proyecto. Instalación avanzada
-                  bajo alcance adicional.
+                  Convierto tu Google Sheet en un sistema que envía
+                  recordatorios automáticos por email o calendario según la fecha
+                  indicada en cada fila.
                 </p>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Ejemplos
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Agencia que olvidaba renovaciones de contratos → ahora
+                    recibe recordatorios antes de cada vencimiento.
+                  </li>
+                  <li>
+                    Empresa que llevaba control de mantenimientos → ahora recibe
+                    avisos automáticos sin necesidad de revisar la hoja.
+                  </li>
+                </ul>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ✅ Beneficios
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Nunca más fechas críticas olvidadas.</li>
+                  <li>Todo centralizado en la misma hoja.</li>
+                  <li>Mejor organización sin depender de la memoria del equipo.</li>
+                  <li>Garantía: 50% inicial, devolución si no cumple lo esperado.</li>
+                </ul>
+              </article>
+
+              <!-- Servicio 7 -->
+              <article
+                id="servicio7"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
+                  <div class="flex-1 min-w-[220px]">
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      Automatización
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Integración de Emails con Google Sheets
+                    </h3>
+                  </div>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $200</span
+                    >
+                    <button
+                      type="button"
+                      @click="add('Integración de Emails con Google Sheets', 200)"
+                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                    >
+                      Añadir al carrito
+                    </button>
+                  </div>
+                </header>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 El reto
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Los correos electrónicos contienen información vital (pedidos,
+                  facturas, leads), pero al quedar en la bandeja se pierden o se
+                  copian a mano a Excel. Eso consume horas y multiplica los
+                  errores.
+                </p>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Mi solución
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Centralizo la información de los correos directamente en
+                  Google Sheets, lista para análisis o seguimiento sin necesidad
+                  de transcribir.
+                </p>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Ejemplos
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Distribuidor que copiaba pedidos de emails a Excel → ahora
+                    cada pedido aparece automáticamente en Sheets.
+                  </li>
+                  <li>
+                    Agencia que recibía leads de campañas por correo → ahora los
+                    contactos llegan a un tablero organizado en tiempo real.
+                  </li>
+                </ul>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ✅ Beneficios
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Ahorro de tiempo en tareas repetitivas.</li>
+                  <li>Menos errores humanos en la captura de datos.</li>
+                  <li>Información clave centralizada y lista para usar.</li>
+                  <li>Garantía: 50% inicial, devolución si no cumple tus expectativas.</li>
+                </ul>
+              </article>
+
+              <!-- Servicio 8 -->
+              <article
+                id="servicio8"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
+                  <div class="flex-1 min-w-[220px]">
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      Operaciones
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Digitalización Automática de Órdenes (OCR + Google Sheets)
+                    </h3>
+                  </div>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $280</span
+                    >
+                    <button
+                      type="button"
+                      @click="add('Digitalización Automática de Órdenes (OCR + Google Sheets)', 280)"
+                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                    >
+                      Añadir al carrito
+                    </button>
+                  </div>
+                </header>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 El reto
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Muchas órdenes de compra o venta llegan en PDF o imágenes
+                  escaneadas. Para procesarlas, alguien debe reescribir línea por
+                  línea en Excel o en el ERP. Es un trabajo tedioso, lento y con
+                  alto riesgo de errores que impactan la operación.
+                </p>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Mi solución
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Configuro un flujo que lee los PDFs y convierte su contenido
+                  en tablas editables en Google Sheets, listas para validar o
+                  importar al sistema.
+                </p>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Ejemplos
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Distribuidor que recibía órdenes en PDF de supermercados →
+                    ahora las ve cargadas en Sheets sin transcripción manual.
+                  </li>
+                  <li>
+                    Empresa que procesaba 50 facturas de proveedores a la semana
+                    → ahora tiene los datos extraídos automáticamente y revisa
+                    solo los detalles críticos.
+                  </li>
+                </ul>
+
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ✅ Beneficios
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>Ahorro de horas en digitación manual.</li>
+                  <li>Reducción de errores en los registros.</li>
+                  <li>Flujo de trabajo más rápido y ordenado.</li>
+                  <li>Garantía: 50% inicial, devolución si no cumple lo esperado.</li>
+                </ul>
               </article>
             </div>
           </div>
@@ -976,34 +1161,52 @@
           cartQty: 0,
           gallery: [
             {
-              title: "Automatización de Reportes",
+              title: "Reportes Financieros Automáticos",
               name: "Automatización de Reportes Financieros (ERP/POS)",
               price: 420,
               href: "#servicio1",
             },
             {
-              title: "WhatsApp para E‑commerce",
+              title: "WhatsApp Commerce Automático",
               name: "Integración E‑commerce con WhatsApp",
               price: 220,
               href: "#servicio2",
             },
             {
-              title: "Cuentas por Cobrar",
+              title: "Alertas de Cuentas por Cobrar",
               name: "Tablero de Cuentas por Cobrar con Alertas",
               price: 260,
               href: "#servicio3",
             },
             {
-              title: "Chatbot WhatsApp",
+              title: "Chatbot WhatsApp 24/7",
               name: "Chatbot en WhatsApp",
               price: 320,
               href: "#servicio4",
             },
             {
-              title: "Research de Plugins",
+              title: "Curaduría de Apps E‑commerce",
               name: "Investigación de Plugins & Apps (Shopify / WooCommerce)",
               price: 200,
               href: "#servicio5",
+            },
+            {
+              title: "Recordatorios Inteligentes",
+              name: "Recordatorios Automáticos en Google Sheets",
+              price: 180,
+              href: "#servicio6",
+            },
+            {
+              title: "Emails Directo a Sheets",
+              name: "Integración de Emails con Google Sheets",
+              price: 200,
+              href: "#servicio7",
+            },
+            {
+              title: "Órdenes OCR en Sheets",
+              name: "Digitalización Automática de Órdenes (OCR + Google Sheets)",
+              price: 280,
+              href: "#servicio8",
             },
           ],
           init() {
