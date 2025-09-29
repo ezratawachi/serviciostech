@@ -387,32 +387,68 @@
               Añade al carrito o revisa más detalles.
             </p>
 
-            <div
-              class="mt-10 grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-            >
-              <template x-for="card in gallery" :key="card.name">
-                <article
-                  class="flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-card"
+            <div class="mt-6">
+              <div class="overflow-x-auto">
+                <div
+                  class="flex min-w-max items-center gap-2 pb-1 xs:justify-center"
+                  role="radiogroup"
+                  aria-label="Filtrar por categoría"
                 >
-                  <h3
-                    class="text-sm font-semibold text-slate-900 min-h-[2.5rem]"
-                    x-text="card.title"
-                  ></h3>
-                  <p
-                    class="mt-2 text-lg font-bold text-brand-700"
-                    x-text="'USD $' + card.price"
-                  ></p>
-                  <div class="mt-auto grid gap-2 pt-4">
+                  <template x-for="option in categoryOptions" :key="option">
+                    <button
+                      type="button"
+                      @click="setCategory(option)"
+                      :aria-pressed="activeCategory === option"
+                      class="inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold transition sm:text-sm"
+                      :class="
+                        activeCategory === option
+                          ? 'border-[#2563eb] bg-[#2563eb] text-white shadow-sm'
+                          : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800'
+                      "
+                    >
+                      <span x-text="option"></span>
+                    </button>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-10 grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-5xl lg:max-w-6xl mx-auto"
+            >
+              <template x-for="card in filteredGallery" :key="card.name">
+                <article
+                  class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-3 shadow-sm transition xs:flex-col xs:items-stretch xs:gap-4 xs:rounded-2xl xs:bg-white xs:p-4 xs:shadow-card lg:p-5 lg:gap-4"
+                >
+                  <div class="flex min-w-0 flex-1 flex-col gap-1">
+                    <h3
+                      class="text-sm font-semibold text-slate-900 sm:text-base"
+                      x-text="card.title"
+                    ></h3>
+                    <a
+                      :href="card.href"
+                      class="mt-1 text-xs font-semibold text-brand-600 hover:text-brand-700 xs:hidden"
+                    >
+                      Ver detalles
+                    </a>
+                  </div>
+                  <div
+                    class="flex flex-col items-end gap-2 xs:w-full xs:items-stretch xs:pt-4 md:items-start md:gap-3 lg:items-end"
+                  >
+                    <p
+                      class="text-base font-bold text-brand-700 sm:text-lg"
+                      x-text="'USD $' + card.price"
+                    ></p>
                     <button
                       type="button"
                       @click="add(card.name, card.price)"
-                      class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] xs:rounded-xl xs:text-sm"
                     >
                       Añadir al carrito
                     </button>
                     <a
                       :href="card.href"
-                      class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+                      class="hidden items-center justify-center rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-100 xs:inline-flex"
                     >
                       Ver detalles
                     </a>
@@ -1165,50 +1201,75 @@
               name: "Automatización de Reportes Financieros (ERP/POS)",
               price: 420,
               href: "#servicio1",
+              category: "Finanzas",
             },
             {
               title: "WhatsApp Commerce Automático",
               name: "Integración E‑commerce con WhatsApp",
               price: 220,
               href: "#servicio2",
+              category: "E-commerce",
             },
             {
               title: "Alertas de Cuentas por Cobrar",
               name: "Tablero de Cuentas por Cobrar con Alertas",
               price: 260,
               href: "#servicio3",
+              category: "Finanzas",
             },
             {
               title: "Chatbot WhatsApp 24/7",
               name: "Chatbot en WhatsApp",
               price: 320,
               href: "#servicio4",
+              category: "WhatsApp",
             },
             {
               title: "Curaduría de Apps E‑commerce",
               name: "Investigación de Plugins & Apps (Shopify / WooCommerce)",
               price: 200,
               href: "#servicio5",
+              category: "E-commerce",
             },
             {
               title: "Recordatorios Inteligentes",
               name: "Recordatorios Automáticos en Google Sheets",
               price: 180,
               href: "#servicio6",
+              category: "Automatización",
             },
             {
               title: "Emails Directo a Sheets",
               name: "Integración de Emails con Google Sheets",
               price: 200,
               href: "#servicio7",
+              category: "Integraciones",
             },
             {
               title: "Órdenes OCR en Sheets",
               name: "Digitalización Automática de Órdenes (OCR + Google Sheets)",
               price: 280,
               href: "#servicio8",
+              category: "Automatización",
             },
           ],
+          activeCategory: "Todos",
+          get categoryOptions() {
+            const options = new Set(["Todos"]);
+            this.gallery.forEach((card) => options.add(card.category));
+            return Array.from(options);
+          },
+          setCategory(category) {
+            this.activeCategory = category;
+          },
+          get filteredGallery() {
+            if (this.activeCategory === "Todos") {
+              return this.gallery;
+            }
+            return this.gallery.filter(
+              (card) => card.category === this.activeCategory
+            );
+          },
           init() {
             this.refresh();
             window.addEventListener("storage", (event) => {
