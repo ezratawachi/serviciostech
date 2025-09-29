@@ -258,6 +258,37 @@
                 />
               </div>
               <div>
+                <label
+                  class="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm font-medium text-slate-700"
+                  for="whatsapp-opt-in"
+                >
+                  <input
+                    id="whatsapp-opt-in"
+                    name="whatsappOptIn"
+                    type="checkbox"
+                    class="mt-1 h-4 w-4 rounded border-slate-300 text-brand-600 transition focus:ring-brand-500"
+                  />
+                  <span>
+                    ¿Quieres que te contactemos por WhatsApp?
+                    <span class="mt-1 block text-xs font-normal text-slate-500">
+                      Te escribiremos al número que nos indiques.
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div id="whatsapp-field" class="hidden">
+                <label for="whatsapp-number" class="text-sm font-medium text-slate-700">Número de WhatsApp</label>
+                <input
+                  type="tel"
+                  id="whatsapp-number"
+                  name="whatsappNumber"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  placeholder="Ej: +507 6000-0000"
+                  class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 transition focus-visible:border-brand-500 focus-visible:bg-white focus-visible:outline-none"
+                />
+              </div>
+              <div>
                 <label for="company" class="text-sm font-medium text-slate-700">Empresa (opcional)</label>
                 <input
                   type="text"
@@ -298,6 +329,24 @@
       const clearBtn = document.getElementById("clear-cart");
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
+      const whatsappCheckbox = document.getElementById("whatsapp-opt-in");
+      const whatsappFieldWrapper = document.getElementById("whatsapp-field");
+      const whatsappInput = document.getElementById("whatsapp-number");
+
+      const syncWhatsappField = () => {
+        if (!whatsappCheckbox || !whatsappFieldWrapper || !whatsappInput) return;
+        const wantsWhatsapp = whatsappCheckbox.checked;
+        whatsappFieldWrapper.classList.toggle("hidden", !wantsWhatsapp);
+        whatsappInput.required = wantsWhatsapp;
+        if (!wantsWhatsapp) {
+          whatsappInput.value = "";
+        }
+      };
+
+      if (whatsappCheckbox) {
+        whatsappCheckbox.addEventListener("change", syncWhatsappField);
+        syncWhatsappField();
+      }
 
       if (mobileMenuButton && mobileMenu) {
         const mobileMenuIcons = {
@@ -517,6 +566,8 @@
             name: form.name.value.trim(),
             email: form.email.value.trim(),
             company: form.company.value.trim(),
+            whatsappOptIn: whatsappCheckbox ? whatsappCheckbox.checked : false,
+            whatsappNumber: whatsappInput ? whatsappInput.value.trim() : "",
             cart,
             total: cart.reduce((sum, item) => sum + item.price * (item.qty || 1), 0),
             createdAt: new Date().toISOString(),
@@ -542,6 +593,7 @@
             setCart([]);
             renderCart();
             form.reset();
+            syncWhatsappField();
             setTimeout(() => {
               window.location.href = "index.html";
             }, 2000);
