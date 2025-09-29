@@ -1,3 +1,4 @@
+//haha
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -13,16 +14,26 @@
     <meta name="theme-color" content="#2563eb" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Servicios digitales listos para tu empresa" />
+    <meta
+      property="og:title"
+      content="Servicios digitales listos para tu empresa"
+    />
     <meta
       property="og:description"
       content="Implementa automatizaciones, tableros y flujos de WhatsApp en semanas, no meses."
     />
-    <meta property="og:image" content="https://dummyimage.com/1200x630/1e3a8a/ffffff&text=Servicios+Empresariales" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1e3a8a/ffffff&text=Servicios+Empresariales"
+    />
     <meta property="og:locale" content="es_PA" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -84,10 +95,7 @@
         },
       };
     </script>
-    <script
-      defer
-      src="https://cdn.tailwindcss.com"
-    ></script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
     <script
       defer
       src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
@@ -110,7 +118,11 @@
         left: 1rem;
       }
       .cline {
-        background: linear-gradient(90deg, rgba(37, 99, 235, 0.18), rgba(16, 185, 129, 0.18));
+        background: linear-gradient(
+          90deg,
+          rgba(37, 99, 235, 0.18),
+          rgba(16, 185, 129, 0.18)
+        );
         height: 1px;
       }
       .animate-floating {
@@ -158,21 +170,41 @@
         }
       }
     </style>
-
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased is-loading">
     <div x-data="site()" x-init="init()" class="min-h-screen flex flex-col">
-      <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+      <a href="#contenido-principal" class="skip-link"
+        >Saltar al contenido principal</a
+      >
 
-      <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Principal">
+      <header
+        class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur"
+      >
+        <nav
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          aria-label="Principal"
+        >
           <div class="flex h-16 items-center justify-between gap-4">
-            <a href="#top" class="text-lg font-extrabold tracking-tight text-slate-900">Canal Datos</a>
+            <a
+              href="#top"
+              class="text-lg font-extrabold tracking-tight text-slate-900"
+              >Canal Datos</a
+            >
 
             <div class="hidden md:flex items-center gap-2 text-sm font-medium">
-              <a href="#galeria" class="px-3 py-2 rounded-lg hover:bg-slate-100">Servicios</a>
-              <a href="#detalles" class="px-3 py-2 rounded-lg hover:bg-slate-100">Detalles</a>
-              <a href="#contacto" class="px-3 py-2 rounded-lg hover:bg-slate-100">Contacto</a>
+              <a href="#galeria" class="px-3 py-2 rounded-lg hover:bg-slate-100"
+                >Servicios</a
+              >
+              <a
+                href="#detalles"
+                class="px-3 py-2 rounded-lg hover:bg-slate-100"
+                >Detalles</a
+              >
+              <a
+                href="#contacto"
+                class="px-3 py-2 rounded-lg hover:bg-slate-100"
+                >Contacto</a
+              >
               <a
                 href="cart.html"
                 class="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 hover:bg-slate-50 transition"
@@ -193,7 +225,7 @@
                 <span
                   x-show="cartQty > 0"
                   x-text="cartQty"
-                class="absolute -top-1 -right-1 inline-grid h-5 w-5 place-items-center rounded-full bg-[#2563eb] text-[10px] font-extrabold leading-none text-white"
+                  class="absolute -top-1 -right-1 inline-grid h-5 w-5 place-items-center rounded-full bg-[#2563eb] text-[10px] font-extrabold leading-none text-white"
                   aria-live="polite"
                 ></span>
               </a>
@@ -242,17 +274,37 @@
           id="menu-movil"
           class="md:hidden border-t border-slate-200 bg-white/95"
         >
-          <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-2 text-sm font-semibold">
-            <a @click="closeMenu()" href="#galeria" class="rounded-lg px-3 py-2 hover:bg-slate-100">Servicios</a>
-            <a @click="closeMenu()" href="#detalles" class="rounded-lg px-3 py-2 hover:bg-slate-100">Detalles</a>
-            <a @click="closeMenu()" href="#contacto" class="rounded-lg px-3 py-2 hover:bg-slate-100">Contacto</a>
+          <div
+            class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-2 text-sm font-semibold"
+          >
+            <a
+              @click="closeMenu()"
+              href="#galeria"
+              class="rounded-lg px-3 py-2 hover:bg-slate-100"
+              >Servicios</a
+            >
+            <a
+              @click="closeMenu()"
+              href="#detalles"
+              class="rounded-lg px-3 py-2 hover:bg-slate-100"
+              >Detalles</a
+            >
+            <a
+              @click="closeMenu()"
+              href="#contacto"
+              class="rounded-lg px-3 py-2 hover:bg-slate-100"
+              >Contacto</a
+            >
             <a
               @click="closeMenu()"
               href="cart.html"
               class="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-slate-100"
             >
               Carrito
-              <span x-text="cartQty" class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#2563eb] text-[10px] font-extrabold leading-none text-white"></span>
+              <span
+                x-text="cartQty"
+                class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#2563eb] text-[10px] font-extrabold leading-none text-white"
+              ></span>
             </a>
           </div>
         </div>
@@ -260,18 +312,26 @@
 
       <main id="contenido-principal" class="grow" tabindex="-1">
         <section id="top" class="relative overflow-hidden">
-          <div aria-hidden class="absolute inset-x-0 -top-24 h-48 bg-gradient-to-r from-brand-100 to-mint-100 blur-2xl"></div>
+          <div
+            aria-hidden
+            class="absolute inset-x-0 -top-24 h-48 bg-gradient-to-r from-brand-100 to-mint-100 blur-2xl"
+          ></div>
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
             <div class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] items-start">
               <div>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+                <h1
+                  class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900"
+                >
                   Servicios
-                  <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-mint-600">
+                  <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-mint-600"
+                  >
                     Empresariales
                   </span>
                 </h1>
                 <p class="mt-3 text-base sm:text-lg text-slate-600 max-w-xl">
-                  Soluciones digitales listas para optimizar tus procesos y ahorrar tiempo.
+                  Soluciones digitales listas para optimizar tus procesos y
+                  ahorrar tiempo.
                 </p>
                 <div class="mt-6 flex flex-wrap gap-3">
                   <a
@@ -279,7 +339,15 @@
                     class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-5 py-3 text-sm sm:text-base font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
                   >
                     Ver servicios
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </a>
@@ -293,11 +361,23 @@
               </div>
 
               <aside class="relative">
-                <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card animate-floating">
-                  <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-600">Lo que dicen los líderes</h2>
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card animate-floating"
+                >
+                  <h2
+                    class="text-sm font-semibold uppercase tracking-wide text-brand-600"
+                  >
+                    Lo que dicen los líderes
+                  </h2>
                   <blockquote class="mt-3 space-y-3 text-sm text-slate-600">
-                    <p class="italic">“La automatización aplicada a un proceso eficiente aumentará la eficiencia. La automatización aplicada a un proceso ineficiente aumentará la ineficiencia.”</p>
-                    <footer class="text-xs font-medium text-slate-500">Bill Gates</footer>
+                    <p class="italic">
+                      “La automatización aplicada a un proceso eficiente
+                      aumentará la eficiencia. La automatización aplicada a un
+                      proceso ineficiente aumentará la ineficiencia.”
+                    </p>
+                    <footer class="text-xs font-medium text-slate-500">
+                      Bill Gates
+                    </footer>
                   </blockquote>
                 </div>
               </aside>
@@ -308,16 +388,30 @@
 
         <section id="galeria" class="py-12 sm:py-16">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 text-center">Vista Rápida de Servicios</h2>
+            <h2
+              class="text-xl sm:text-2xl font-bold text-slate-900 text-center"
+            >
+              Vista Rápida de Servicios
+            </h2>
             <p class="mt-1 text-center text-sm sm:text-base text-slate-600">
               Añade al carrito o revisa más detalles.
             </p>
 
-            <div class="mt-10 grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            <div
+              class="mt-10 grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+            >
               <template x-for="card in gallery" :key="card.name">
-                <article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-card">
-                  <h3 class="text-sm font-semibold text-slate-900 min-h-[2.5rem]" x-text="card.title"></h3>
-                  <p class="mt-2 text-lg font-bold text-brand-700" x-text="'USD $' + card.price"></p>
+                <article
+                  class="flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-card"
+                >
+                  <h3
+                    class="text-sm font-semibold text-slate-900 min-h-[2.5rem]"
+                    x-text="card.title"
+                  ></h3>
+                  <p
+                    class="mt-2 text-lg font-bold text-brand-700"
+                    x-text="'USD $' + card.price"
+                  ></p>
                   <div class="mt-auto grid gap-2 pt-4">
                     <button
                       type="button"
@@ -344,20 +438,40 @@
         <section id="detalles" class="bg-white/70 py-14 sm:py-16">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-2xl text-center">
-              <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Casos de uso con impacto tangible</h2>
-              <p class="mt-2 text-sm sm:text-base text-slate-600">Cada servicio incluye documentación, video de soporte y 7 días de acompañamiento posterior a la entrega.</p>
+              <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">
+                Casos de uso con impacto tangible
+              </h2>
+              <p class="mt-2 text-sm sm:text-base text-slate-600">
+                Cada servicio incluye documentación, video de soporte y 7 días
+                de acompañamiento posterior a la entrega.
+              </p>
             </div>
 
             <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
               <!-- Servicio 1 -->
-              <article id="servicio1" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
-                <header class="flex flex-wrap items-center justify-between gap-4">
+              <article
+                id="servicio1"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
                   <div class="flex-1 min-w-[220px]">
-                    <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">Finanzas</p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">Automatización de Reportes Financieros (ERP/POS)</h3>
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      Finanzas
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Automatización de Reportes Financieros (ERP/POS)
+                    </h3>
                   </div>
-                  <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3">
-                    <span class="text-sm font-semibold text-[#2563eb]">USD $420</span>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $420</span
+                    >
                     <button
                       type="button"
                       @click="add('Automatización de Reportes Financieros (ERP/POS)', 420)"
@@ -368,45 +482,97 @@
                   </div>
                 </header>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🚨 Problema real</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 Problema real
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  La exportación manual de ventas y gastos consume horas valiosas. Cada cierre requiere limpiar datos en Excel, construir tablas y consolidar KPIs, aumentando el riesgo de errores y decisiones tardías.
+                  La exportación manual de ventas y gastos consume horas
+                  valiosas. Cada cierre requiere limpiar datos en Excel,
+                  construir tablas y consolidar KPIs, aumentando el riesgo de
+                  errores y decisiones tardías.
                 </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⚡ Cómo lo hago</h4>
-                <ol class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700">
-                  <li>Evalúo integraciones directas a Google Sheets o conectores disponibles para tu ERP/POS.</li>
-                  <li>Configuro reportes personalizados o exploto exportaciones estándar en CSV/Excel.</li>
-                  <li>Automatizo limpieza, consolidación y generación de KPIs (ventas por canal, margen, top productos).</li>
-                  <li>Entrego reportes PDF listos para gerencia en un clic, con registros de ejecución.</li>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Cómo lo hago
+                </h4>
+                <ol
+                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Evalúo integraciones directas a Google Sheets o conectores
+                    disponibles para tu ERP/POS.
+                  </li>
+                  <li>
+                    Configuro reportes personalizados o exploto exportaciones
+                    estándar en CSV/Excel.
+                  </li>
+                  <li>
+                    Automatizo limpieza, consolidación y generación de KPIs
+                    (ventas por canal, margen, top productos).
+                  </li>
+                  <li>
+                    Entrego reportes PDF listos para gerencia en un clic, con
+                    registros de ejecución.
+                  </li>
                 </ol>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📑 Qué entrego</h4>
-                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700">
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📑 Qué entrego
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
                   <li>Archivo maestro conectado a tu ERP o POS.</li>
                   <li>Plantilla PDF “Reporte Gerencial”.</li>
                   <li>Mini-manual (3–5 páginas) y video walkthrough.</li>
                 </ul>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🔧 Qué necesito</h4>
-                <p class="mt-2 text-sm text-slate-700">Exportación de prueba (CSV/Excel) y diccionario de columnas del ERP/POS.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🔧 Qué necesito
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Exportación de prueba (CSV/Excel) y diccionario de columnas
+                  del ERP/POS.
+                </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⏱️ Tiempo de entrega</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⏱️ Tiempo de entrega
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">5 días hábiles.</p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📌 Límites</h4>
-                <p class="mt-2 text-sm text-slate-700">Una fuente de ventas y hasta 12 meses de histórico. Integración API bajo presupuesto adicional.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Límites
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Una fuente de ventas y hasta 12 meses de histórico.
+                  Integración API bajo presupuesto adicional.
+                </p>
               </article>
 
               <!-- Servicio 2 -->
-              <article id="servicio2" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
-                <header class="flex flex-wrap items-center justify-between gap-4">
+              <article
+                id="servicio2"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
                   <div class="flex-1 min-w-[220px]">
-                    <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">E‑commerce</p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">Integración E‑commerce con WhatsApp</h3>
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      E‑commerce
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Integración E‑commerce con WhatsApp
+                    </h3>
                   </div>
-                  <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3">
-                    <span class="text-sm font-semibold text-[#2563eb]">USD $220</span>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $220</span
+                    >
                     <button
                       type="button"
                       @click="add('Integración E‑commerce con WhatsApp', 220)"
@@ -417,46 +583,96 @@
                   </div>
                 </header>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🚨 Problema real</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 Problema real
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Shopify o WooCommerce notifican ventas, pero tu equipo aún copia y pega información en chats. Las confirmaciones y seguimientos llegan tarde y se pierden oportunidades.
+                  Shopify o WooCommerce notifican ventas, pero tu equipo aún
+                  copia y pega información en chats. Las confirmaciones y
+                  seguimientos llegan tarde y se pierden oportunidades.
                 </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⚡ Cómo lo hago</h4>
-                <ol class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700">
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Cómo lo hago
+                </h4>
+                <ol
+                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
+                >
                   <li>Conecto la tienda online a WhatsApp Business.</li>
-                  <li>Defino eventos clave: pedido confirmado, pago recibido, envío listo.</li>
+                  <li>
+                    Defino eventos clave: pedido confirmado, pago recibido,
+                    envío listo.
+                  </li>
                   <li>Diseño mensajes automáticos claros y consistentes.</li>
                   <li>Pruebo el flujo end-to-end y entreno a tu equipo.</li>
                 </ol>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📑 Qué entrego</h4>
-                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700">
-                  <li>Flujo de integración activo entre Shopify/WooCommerce y WhatsApp.</li>
-                  <li>Mensajes automáticos para hasta tres eventos críticos.</li>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📑 Qué entrego
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Flujo de integración activo entre Shopify/WooCommerce y
+                    WhatsApp.
+                  </li>
+                  <li>
+                    Mensajes automáticos para hasta tres eventos críticos.
+                  </li>
                   <li>Guía rápida de uso y soporte inicial.</li>
                 </ul>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🔧 Qué necesito</h4>
-                <p class="mt-2 text-sm text-slate-700">Accesos de administrador a la tienda online y cuenta de WhatsApp Business.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🔧 Qué necesito
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Accesos de administrador a la tienda online y cuenta de
+                  WhatsApp Business.
+                </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⏱️ Tiempo de entrega</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⏱️ Tiempo de entrega
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">5–7 días hábiles.</p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📌 Límites</h4>
-                <p class="mt-2 text-sm text-slate-700">Hasta 3 eventos automáticos. No incluye múltiples números ni soporte masivo.</p>
-                <p class="mt-1 text-xs italic text-slate-500">Nota: Puede existir cargo adicional del proveedor de WhatsApp (~USD $0.02 por mensaje).</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Límites
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Hasta 3 eventos automáticos. No incluye múltiples números ni
+                  soporte masivo.
+                </p>
+                <p class="mt-1 text-xs italic text-slate-500">
+                  Nota: Puede existir cargo adicional del proveedor de WhatsApp
+                  (~USD $0.02 por mensaje).
+                </p>
               </article>
 
               <!-- Servicio 3 -->
-              <article id="servicio3" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
-                <header class="flex flex-wrap items-center justify-between gap-4">
+              <article
+                id="servicio3"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
                   <div class="flex-1 min-w-[220px]">
-                    <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">Finanzas</p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">Tablero de Cuentas por Cobrar con Alertas</h3>
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      Finanzas
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Tablero de Cuentas por Cobrar con Alertas
+                    </h3>
                   </div>
-                  <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3">
-                    <span class="text-sm font-semibold text-[#2563eb]">USD $260</span>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $260</span
+                    >
                     <button
                       type="button"
                       @click="add('Tablero de Cuentas por Cobrar con Alertas', 260)"
@@ -467,45 +683,89 @@
                   </div>
                 </header>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🚨 Problema real</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 Problema real
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Los aging reports existen, pero no hay seguimiento. Las alertas llegan tarde y la cobranza no se prioriza, generando retrasos en flujo de caja.
+                  Los aging reports existen, pero no hay seguimiento. Las
+                  alertas llegan tarde y la cobranza no se prioriza, generando
+                  retrasos en flujo de caja.
                 </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⚡ Cómo lo hago</h4>
-                <ol class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700">
-                  <li>Conecto la exportación de cuentas por cobrar a Google Sheets.</li>
-                  <li>Creo tablero con segmentos 0‑30, 31‑60, 61‑90 y 90+ días.</li>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Cómo lo hago
+                </h4>
+                <ol
+                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Conecto la exportación de cuentas por cobrar a Google
+                    Sheets.
+                  </li>
+                  <li>
+                    Creo tablero con segmentos 0‑30, 31‑60, 61‑90 y 90+ días.
+                  </li>
                   <li>Configuro alertas semanales automáticas por correo.</li>
                   <li>Incluyo plantillas de email listas para cobrar.</li>
                 </ol>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📑 Qué entrego</h4>
-                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700">
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📑 Qué entrego
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
                   <li>Tablero dinámico en Google Sheets.</li>
                   <li>Alertas semanales automáticas.</li>
                   <li>Plantillas de cobranza profesionales.</li>
                 </ul>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🔧 Qué necesito</h4>
-                <p class="mt-2 text-sm text-slate-700">Export del reporte de antigüedad de saldos desde tu ERP o sistema contable.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🔧 Qué necesito
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Export del reporte de antigüedad de saldos desde tu ERP o
+                  sistema contable.
+                </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⏱️ Tiempo de entrega</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⏱️ Tiempo de entrega
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">4–5 días hábiles.</p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📌 Límites</h4>
-                <p class="mt-2 text-sm text-slate-700">Hasta 5,000 facturas históricas. Integración API según alcance.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Límites
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Hasta 5,000 facturas históricas. Integración API según
+                  alcance.
+                </p>
               </article>
 
               <!-- Servicio 4 -->
-              <article id="servicio4" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
-                <header class="flex flex-wrap items-center justify-between gap-4">
+              <article
+                id="servicio4"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
                   <div class="flex-1 min-w-[220px]">
-                    <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">Atención al cliente</p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">Chatbot en WhatsApp</h3>
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      Atención al cliente
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Chatbot en WhatsApp
+                    </h3>
                   </div>
-                  <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3">
-                    <span class="text-sm font-semibold text-[#2563eb]">USD $320</span>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $320</span
+                    >
                     <button
                       type="button"
                       @click="add('Chatbot en WhatsApp', 320)"
@@ -516,46 +776,92 @@
                   </div>
                 </header>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🚨 Problema real</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 Problema real
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  El volumen de consultas crece más rápido que tu equipo. Responder manualmente toma horas, se pierden oportunidades y la experiencia no es consistente.
+                  El volumen de consultas crece más rápido que tu equipo.
+                  Responder manualmente toma horas, se pierden oportunidades y
+                  la experiencia no es consistente.
                 </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⚡ Cómo lo hago</h4>
-                <ol class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700">
-                  <li>Configuro chatbot en WhatsApp Business con flujos claros.</li>
-                  <li>Defino respuestas automáticas para preguntas frecuentes.</li>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Cómo lo hago
+                </h4>
+                <ol
+                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Configuro chatbot en WhatsApp Business con flujos claros.
+                  </li>
+                  <li>
+                    Defino respuestas automáticas para preguntas frecuentes.
+                  </li>
                   <li>Integro con Google Sheets, e‑commerce o CRM simple.</li>
                   <li>Incluyo opción de escalar a un agente humano.</li>
                 </ol>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📑 Qué entrego</h4>
-                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700">
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📑 Qué entrego
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
                   <li>Chatbot funcional adaptado a tu negocio.</li>
                   <li>Flujos automáticos configurados.</li>
                   <li>Guía rápida y soporte inicial.</li>
                 </ul>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🔧 Qué necesito</h4>
-                <p class="mt-2 text-sm text-slate-700">Cuenta de WhatsApp Business y accesos a sistemas que se integrarán.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🔧 Qué necesito
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Cuenta de WhatsApp Business y accesos a sistemas que se
+                  integrarán.
+                </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⏱️ Tiempo de entrega</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⏱️ Tiempo de entrega
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">7–10 días hábiles.</p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📌 Límites</h4>
-                <p class="mt-2 text-sm text-slate-700">Hasta cinco flujos principales. Integraciones avanzadas o IA bajo alcance adicional.</p>
-                <p class="mt-1 text-xs italic text-slate-500">Nota: Proveedores de WhatsApp Business pueden cobrar ~USD $0.02 por mensaje.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Límites
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Hasta cinco flujos principales. Integraciones avanzadas o IA
+                  bajo alcance adicional.
+                </p>
+                <p class="mt-1 text-xs italic text-slate-500">
+                  Nota: Proveedores de WhatsApp Business pueden cobrar ~USD
+                  $0.02 por mensaje.
+                </p>
               </article>
 
               <!-- Servicio 5 -->
-              <article id="servicio5" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
-                <header class="flex flex-wrap items-center justify-between gap-4">
+              <article
+                id="servicio5"
+                class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card"
+              >
+                <header
+                  class="flex flex-wrap items-center justify-between gap-4"
+                >
                   <div class="flex-1 min-w-[220px]">
-                    <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">E‑commerce</p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">Investigación de Plugins & Apps (Shopify / WooCommerce)</h3>
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
+                    >
+                      E‑commerce
+                    </p>
+                    <h3 class="mt-1 text-lg font-bold text-slate-900">
+                      Investigación de Plugins & Apps (Shopify / WooCommerce)
+                    </h3>
                   </div>
-                  <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3">
-                    <span class="text-sm font-semibold text-[#2563eb]">USD $200</span>
+                  <div
+                    class="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
+                    <span class="text-sm font-semibold text-[#2563eb]"
+                      >USD $200</span
+                    >
                     <button
                       type="button"
                       @click="add('Investigación de Plugins & Apps (Shopify / WooCommerce)', 200)"
@@ -566,34 +872,68 @@
                   </div>
                 </header>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🚨 Problema real</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🚨 Problema real
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">
-                  Instalar apps sin criterio vuelve lenta tu tienda y desperdicia presupuesto. Necesitas decisiones basadas en datos y reputación real.
+                  Instalar apps sin criterio vuelve lenta tu tienda y
+                  desperdicia presupuesto. Necesitas decisiones basadas en datos
+                  y reputación real.
                 </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⚡ Cómo lo hago</h4>
-                <ol class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700">
-                  <li>Analizo objetivos clave (conversiones, marketing, fidelización).</li>
-                  <li>Investigo y comparo apps de Shopify o WooCommerce según tu caso.</li>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⚡ Cómo lo hago
+                </h4>
+                <ol
+                  class="mt-2 space-y-1.5 list-decimal pl-5 text-sm text-slate-700"
+                >
+                  <li>
+                    Analizo objetivos clave (conversiones, marketing,
+                    fidelización).
+                  </li>
+                  <li>
+                    Investigo y comparo apps de Shopify o WooCommerce según tu
+                    caso.
+                  </li>
                   <li>Evalúo reputación, soporte, precio y compatibilidad.</li>
-                  <li>Presento las mejores opciones con recomendación priorizada.</li>
+                  <li>
+                    Presento las mejores opciones con recomendación priorizada.
+                  </li>
                 </ol>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📑 Qué entrego</h4>
-                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700">
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📑 Qué entrego
+                </h4>
+                <ul
+                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
+                >
                   <li>Reporte en PDF con análisis de 3–5 apps recomendadas.</li>
-                  <li>Tabla comparativa costo vs beneficio vs facilidad de uso.</li>
+                  <li>
+                    Tabla comparativa costo vs beneficio vs facilidad de uso.
+                  </li>
                   <li>Plan de instalación para la app más adecuada.</li>
                 </ul>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">🔧 Qué necesito</h4>
-                <p class="mt-2 text-sm text-slate-700">Objetivos prioritarios (ventas, marketing, envíos, reseñas, velocidad).</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  🔧 Qué necesito
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Objetivos prioritarios (ventas, marketing, envíos, reseñas,
+                  velocidad).
+                </p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">⏱️ Tiempo de entrega</h4>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  ⏱️ Tiempo de entrega
+                </h4>
                 <p class="mt-2 text-sm text-slate-700">3–4 días hábiles.</p>
 
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">📌 Límites</h4>
-                <p class="mt-2 text-sm text-slate-700">Hasta cinco necesidades por proyecto. Instalación avanzada bajo alcance adicional.</p>
+                <h4 class="mt-5 text-sm font-semibold text-slate-900">
+                  📌 Límites
+                </h4>
+                <p class="mt-2 text-sm text-slate-700">
+                  Hasta cinco necesidades por proyecto. Instalación avanzada
+                  bajo alcance adicional.
+                </p>
               </article>
             </div>
           </div>
@@ -601,11 +941,23 @@
 
         <section id="contacto" class="py-14 sm:py-16">
           <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-card">
-              <h2 class="text-2xl font-bold text-slate-900 text-center">Contáctame</h2>
-              <p class="mt-3 text-center text-sm sm:text-base text-slate-600">¿Tienes dudas o quieres más información? Escríbeme.</p>
-              <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <a href="mailto:ezratawachi@gmail.com" class="inline-flex items-center gap-2 rounded-xl bg-[#059669] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#047857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#047857]">✉️ Enviar un correo</a>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-8 shadow-card"
+            >
+              <h2 class="text-2xl font-bold text-slate-900 text-center">
+                Contáctame
+              </h2>
+              <p class="mt-3 text-center text-sm sm:text-base text-slate-600">
+                ¿Tienes dudas o quieres más información? Escríbeme.
+              </p>
+              <div
+                class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+              >
+                <a
+                  href="mailto:ezratawachi@gmail.com"
+                  class="inline-flex items-center gap-2 rounded-xl bg-[#059669] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#047857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#047857]"
+                  >✉️ Enviar un correo</a
+                >
                 <a
                   href="https://wa.me/50764931573"
                   target="_blank"
@@ -621,7 +973,9 @@
       </main>
 
       <footer class="mt-auto border-t border-slate-200 bg-white/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs sm:text-sm text-slate-600">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs sm:text-sm text-slate-600"
+        >
           © 2025 Canal Datos · Servicios digitales para empresas en Panamá.
         </div>
       </footer>
@@ -697,11 +1051,16 @@
           },
           refresh() {
             const cart = this.getCart();
-            this.cartQty = cart.reduce((total, item) => total + (item.qty || 1), 0);
+            this.cartQty = cart.reduce(
+              (total, item) => total + (item.qty || 1),
+              0
+            );
           },
           add(name, price) {
             const cart = this.getCart();
-            const match = cart.find((item) => item.name === name && item.price === price);
+            const match = cart.find(
+              (item) => item.name === name && item.price === price
+            );
             if (match) {
               match.qty = (match.qty || 1) + 1;
             } else {
