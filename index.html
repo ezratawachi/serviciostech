@@ -127,20 +127,65 @@
       .animate-floating {
         animation: float 8s ease-in-out infinite;
       }
-      .toast-layer {
-        position: fixed;
-        left: 50%;
-        bottom: 1.5rem;
-        transform: translate(-50%, 0);
-        z-index: 60;
-        border-radius: 0.75rem;
-        background: #2563eb;
+      .add-to-cart-btn {
+        position: relative;
+        overflow: hidden;
+        min-width: 8.5rem;
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      }
+      .add-to-cart-btn > * {
+        position: relative;
+        z-index: 1;
+      }
+      .add-to-cart-btn[data-state='idle'] {
+        background-color: #2563eb;
         color: #fff;
-        padding: 0.6rem 1.1rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
-        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .add-to-cart-btn[data-state='idle']:hover {
+        background-color: #1d4ed8;
+      }
+      .add-to-cart-btn[data-state='loading'] {
+        background: linear-gradient(110deg, #f1f5f9, #e2e8f0, #f8fafc);
+        color: #1f2937;
+      }
+      .add-to-cart-btn[data-state='loading']::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent, rgba(148, 163, 184, 0.35), transparent);
+        animation: shimmer 1s linear infinite;
+        opacity: 0.7;
+      }
+      .add-to-cart-btn[data-state='success'] {
+        background-color: #10b981;
+        color: #fff;
+        box-shadow: 0 14px 30px rgba(16, 185, 129, 0.35);
+        transform: translateY(-1px);
+      }
+      .add-to-cart-btn[data-state='success']::after {
+        content: '';
+        position: absolute;
+        inset: -12%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.55), transparent 62%);
+        animation: pop 0.6s ease-out forwards;
+      }
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+      @keyframes pop {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1.6);
+          opacity: 0;
+        }
       }
       body.is-loading {
         opacity: 0;
@@ -309,19 +354,25 @@
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
             <div class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] items-start">
               <div>
+                <div class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-brand-600 shadow-sm backdrop-blur-sm">
+                  Nuevas soluciones 2025
+                </div>
                 <h1
-                  class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900"
+                  class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight"
                 >
-                  Servicios
-                  <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-mint-600"
-                  >
-                    Empresariales
+                  Impulsa tu empresa con
+                  <span class="relative inline-block">
+                    <span class="relative z-10 text-brand-700">
+                      automatizaciones listas para producción
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      class="absolute inset-x-0 bottom-0 h-2 -z-10 rounded-full bg-mint-200/60"
+                    ></span>
                   </span>
                 </h1>
-                <p class="mt-3 text-base sm:text-lg text-slate-600 max-w-xl">
-                  Soluciones digitales listas para optimizar tus procesos y
-                  ahorrar tiempo.
+                <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-xl">
+                  Diseñamos integraciones, dashboards y flujos que conectan tus datos y reducen tareas manuales desde la primera semana.
                 </p>
                 <div class="mt-6 flex flex-wrap gap-3">
                   <a
@@ -441,10 +492,54 @@
                     ></p>
                     <button
                       type="button"
-                      @click="add(card.name, card.price)"
-                      class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] xs:rounded-xl xs:text-sm"
+                      x-data="addButton(() => add(card.name, card.price))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 xs:rounded-xl xs:text-sm"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                     <a
                       :href="card.href"
@@ -500,10 +595,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Automatización de Reportes Financieros (ERP/POS)', 420)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Automatización de Reportes Financieros (ERP/POS)', 420))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -587,10 +726,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Integración E‑commerce con WhatsApp', 220)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Integración E‑commerce con WhatsApp', 220))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -671,10 +854,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Tablero de Cuentas por Cobrar con Alertas', 260)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Tablero de Cuentas por Cobrar con Alertas', 260))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -756,10 +983,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Chatbot en WhatsApp', 320)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Chatbot en WhatsApp', 320))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -840,10 +1111,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Investigación de Plugins & Apps (Shopify / WooCommerce)', 200)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Investigación de Plugins & Apps (Shopify / WooCommerce)', 200))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -923,10 +1238,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Recordatorios Automáticos en Google Sheets', 180)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Recordatorios Automáticos en Google Sheets', 180))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -1005,10 +1364,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Integración de Emails con Google Sheets', 200)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Integración de Emails con Google Sheets', 200))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -1087,10 +1490,54 @@
                     >
                     <button
                       type="button"
-                      @click="add('Digitalización Automática de Órdenes (OCR + Google Sheets)', 280)"
-                      class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                      x-data="addButton(() => add('Digitalización Automática de Órdenes (OCR + Google Sheets)', 280))"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="add-to-cart-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-card transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] justify-center disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Añadir al carrito
+                      <svg
+                        x-cloak
+                        x-show="state === 'loading'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 animate-spin text-current"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="3"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          d="M4 12a8 8 0 0 1 8-8"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        x-cloak
+                        x-show="state === 'success'"
+                        x-transition.opacity.scale.95
+                        class="h-4 w-4 text-current"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span class="whitespace-nowrap" x-text="currentLabel()" aria-live="polite"></span>
                     </button>
                   </div>
                 </header>
@@ -1190,6 +1637,51 @@
     </div>
 
     <script>
+      function addButton(action, options = {}) {
+        return {
+          state: "idle",
+          labels: {
+            idle: options.idleLabel || "Añadir al carrito",
+            loading: options.loadingLabel || "Sincronizando...",
+            success: options.successLabel || "Agregado",
+          },
+          loadingDelay: options.loadingDelay ?? 520,
+          successDuration: options.successDuration ?? 2400,
+          loadingTimer: null,
+          resetTimer: null,
+          handleClick() {
+            if (this.state === "loading") {
+              return;
+            }
+            this.state = "loading";
+            try {
+              action();
+            } catch (error) {
+              console.error('No se pudo agregar al carrito', error);
+              this.state = "idle";
+              return;
+            }
+            clearTimeout(this.loadingTimer);
+            clearTimeout(this.resetTimer);
+            this.loadingTimer = window.setTimeout(() => {
+              this.state = "success";
+              this.resetTimer = window.setTimeout(() => {
+                this.state = "idle";
+              }, this.successDuration);
+            }, this.loadingDelay);
+          },
+          currentLabel() {
+            if (this.state === "loading") {
+              return this.labels.loading;
+            }
+            if (this.state === "success") {
+              return this.labels.success;
+            }
+            return this.labels.idle;
+          },
+        };
+      }
+
       function site() {
         const storageKey = "ezraServicesCart";
         return {
@@ -1319,24 +1811,6 @@
             }
             this.setCart(cart);
             this.refresh();
-            this.toast("Servicio agregado al carrito");
-          },
-          toast(message) {
-            const toast = document.createElement("div");
-            toast.textContent = message;
-            toast.setAttribute("role", "status");
-            toast.setAttribute("aria-live", "polite");
-            toast.className = "toast-layer";
-            toast.style.opacity = "1";
-            toast.style.transform = "translate(-50%, 0)";
-            document.body.appendChild(toast);
-            setTimeout(() => {
-              toast.style.opacity = "0";
-              toast.style.transform = "translate(-50%, 12px)";
-            }, 1600);
-            setTimeout(() => {
-              toast.remove();
-            }, 2100);
           },
         };
       }
