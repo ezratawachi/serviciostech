@@ -131,13 +131,17 @@
         animation: float 8s ease-in-out infinite;
       }
       [data-animate] {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal-ready [data-animate] {
         opacity: 0;
         transform: var(--animate-transform, translateY(18px));
         transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
           transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
         transition-delay: var(--animate-delay, 0s);
       }
-      [data-animate].is-visible {
+      .reveal-ready [data-animate].is-visible {
         opacity: 1;
         transform: none;
       }
@@ -294,7 +298,7 @@
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        [data-animate] {
+        .reveal-ready [data-animate] {
           opacity: 1 !important;
           transform: none !important;
         }
@@ -1909,6 +1913,7 @@
           return;
         }
         revealAnimationsConfigured = true;
+        document.documentElement.classList.add("reveal-ready");
         const prefersReduced = window.matchMedia(
           "(prefers-reduced-motion: reduce)"
         ).matches;
@@ -1916,6 +1921,11 @@
 
         const markVisible = (element) => {
           element.classList.add("is-visible");
+        };
+        const isInViewport = (element) => {
+          const rect = element.getBoundingClientRect();
+          const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+          return rect.top < viewHeight * 0.92 && rect.bottom > 0;
         };
 
         const tracked = new WeakSet();
@@ -1937,6 +1947,10 @@
             return;
           }
           observer.observe(element);
+          if (isInViewport(element)) {
+            markVisible(element);
+            observer.unobserve(element);
+          }
         };
 
         if (!prefersReduced && supportsIntersection) {
@@ -1972,7 +1986,7 @@
                 trackElement(node);
               }
               node
-                .querySelectorAll?.("[data-animate]")
+                .querySelectorAll("[data-animate]")
                 .forEach((child) => trackElement(child));
             });
           });
@@ -1981,6 +1995,14 @@
           childList: true,
           subtree: true,
         });
+
+        window.setTimeout(() => {
+          document
+            .querySelectorAll(
+              ".reveal-ready [data-animate]:not(.is-visible)"
+            )
+            .forEach((element) => markVisible(element));
+        }, 1200);
       }
 
       function site() {
