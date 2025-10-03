@@ -115,21 +115,113 @@
       .skip-link:focus {
         left: 1rem;
       }
-      .toast-layer {
-        position: fixed;
-        left: 50%;
-        bottom: 1.5rem;
-        transform: translate(-50%, 12px);
-        z-index: 120;
-        border-radius: 999px;
-        background: linear-gradient(140deg, rgba(79, 70, 229, 0.88), rgba(45, 212, 191, 0.88));
-        color: #020817;
-        padding: 0.65rem 1.4rem;
-        font-size: 0.85rem;
+      .cart-action {
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
         font-weight: 600;
-        box-shadow: 0 18px 44px rgba(99, 102, 241, 0.45);
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease,
+          border-color 0.25s ease,
+          color 0.25s ease;
+        will-change: transform, box-shadow, background, border-color, color;
+      }
+      .cart-action [data-icon] {
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+      .cart-action [data-icon] svg {
+        width: 1rem;
+        height: 1rem;
+      }
+      .cart-action[data-state="loading"] [data-icon="loading"],
+      .cart-action[data-state="success"] [data-icon="success"] {
+        display: inline-flex;
+      }
+      .cart-action[data-state="loading"] {
+        cursor: wait;
+      }
+      .cart-action--primary[data-state="loading"] {
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(22, 37, 57, 0.92));
+        color: #94a3b8;
+        border-color: rgba(148, 163, 184, 0.4);
+        box-shadow: none;
+        animation: loadingPulse 1.2s ease-in-out infinite;
+      }
+      .cart-action--primary[data-state="success"] {
+        background: linear-gradient(140deg, rgba(45, 212, 191, 0.95), rgba(20, 184, 166, 0.95));
+        color: #032c25;
+        border-color: rgba(45, 212, 191, 0.9);
+        box-shadow: 0 22px 44px rgba(45, 212, 191, 0.4);
+        transform: translateY(-1px) scale(1.02);
+        animation: successBounce 0.65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+      }
+      .cart-action--primary[data-state="success"]::before {
+        content: "";
+        position: absolute;
+        inset: -15%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.6), transparent 68%);
+        opacity: 0;
+        border-radius: inherit;
+        animation: successGlow 0.8s ease-out forwards;
         pointer-events: none;
+      }
+      .cart-action--ghost[data-state="loading"] {
+        color: #cbd5f5;
+      }
+      .cart-action--ghost[data-state="success"] {
+        color: #5eead4;
+      }
+      .cart-action[data-state="error"] {
+        background: linear-gradient(180deg, rgba(127, 29, 29, 0.12), rgba(76, 5, 25, 0.12));
+        border-color: rgba(248, 113, 113, 0.35);
+        color: #fecdd3;
+        box-shadow: 0 20px 42px rgba(248, 113, 113, 0.18);
+      }
+      @keyframes loadingPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 rgba(148, 163, 184, 0.22);
+        }
+        50% {
+          transform: scale(0.99);
+          box-shadow: 0 0 0 8px rgba(148, 163, 184, 0.18);
+        }
+      }
+      @keyframes successBounce {
+        0% {
+          transform: translateY(0) scale(0.96);
+        }
+        50% {
+          transform: translateY(-3px) scale(1.06);
+        }
+        100% {
+          transform: translateY(-1px) scale(1);
+        }
+      }
+      @keyframes successGlow {
+        0% {
+          opacity: 0.98;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.65);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cart-action,
+        .cart-action::before {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+        }
       }
       body.is-loading {
         opacity: 0;
@@ -242,9 +334,28 @@
                   <button
                     type="button"
                     id="clear-cart"
-                    class="text-xs font-semibold uppercase tracking-[0.28em] text-white/60 transition hover:text-white"
+                    data-state="idle"
+                    data-label-idle="Vaciar carrito"
+                    data-label-loading="Vaciando..."
+                    data-label-success="Carrito vacío"
+                    class="cart-action cart-action--ghost text-xs font-semibold uppercase tracking-[0.28em] text-white/60 transition hover:text-white"
                   >
-                    Vaciar carrito
+                    <span data-icon="loading" aria-hidden="true">
+                      <svg class="animate-spin text-current" viewBox="0 0 24 24" fill="none">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                        <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+                      </svg>
+                    </span>
+                    <span data-icon="success" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span data-label aria-live="polite">Vaciar carrito</span>
                   </button>
                 </div>
                 <div id="cart-items" class="divide-y divide-white/5">
@@ -337,9 +448,28 @@
                 </div>
                 <button
                   type="submit"
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:from-midnight-400 hover:to-aura-300 disabled:cursor-not-allowed disabled:opacity-50"
+                  data-state="idle"
+                  data-label-idle="Enviar pedido"
+                  data-label-loading="Enviando..."
+                  data-label-success="Pedido enviado"
+                  class="cart-action cart-action--primary inline-flex w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:from-midnight-400 hover:to-aura-300 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Enviar pedido
+                  <span data-icon="loading" aria-hidden="true">
+                    <svg class="animate-spin text-current" viewBox="0 0 24 24" fill="none">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                      <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+                    </svg>
+                  </span>
+                  <span data-icon="success" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span data-label aria-live="polite">Enviar pedido</span>
                 </button>
               </form>
             </section>
@@ -354,8 +484,6 @@
       </div>
     </footer>
 
-    <div id="toast" class="toast-layer" style="opacity: 0"></div>
-
     <script>
       const storageKey = "ezraServicesCart";
       const EMAIL_ENDPOINT =
@@ -363,13 +491,59 @@
 
       const itemsContainer = document.getElementById("cart-items");
       const totalEl = document.getElementById("cart-total");
-      const toastLayer = document.getElementById("toast");
       const clearBtn = document.getElementById("clear-cart");
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
       const whatsappCheckbox = document.getElementById("whatsapp-opt-in");
       const whatsappFieldWrapper = document.getElementById("whatsapp-field");
       const whatsappInput = document.getElementById("whatsapp-number");
+      const buttonResetTimers = new WeakMap();
+
+      const updateActionButtonLabel = (button, state) => {
+        if (!button) return;
+        const labelEl = button.querySelector('[data-label]');
+        if (!labelEl) return;
+        const normalized = state ? state.toLowerCase() : "idle";
+        const key = `label${normalized.charAt(0).toUpperCase()}${normalized.slice(1)}`;
+        const fallback = button.dataset.labelIdle || labelEl.textContent;
+        labelEl.textContent = button.dataset[key] || fallback;
+      };
+
+      const setButtonState = (button, state) => {
+        if (!button) return;
+        button.dataset.state = state;
+        updateActionButtonLabel(button, state);
+      };
+
+      const cancelButtonIdle = (button) => {
+        if (!button) return;
+        const existing = buttonResetTimers.get(button);
+        if (existing) {
+          clearTimeout(existing);
+          buttonResetTimers.delete(button);
+        }
+      };
+
+      const scheduleButtonIdle = (button, delay = 0, callback) => {
+        if (!button) return;
+        cancelButtonIdle(button);
+        const normalizedDelay = Math.max(0, delay);
+        if (!normalizedDelay) {
+          setButtonState(button, "idle");
+          if (typeof callback === "function") {
+            callback();
+          }
+          return;
+        }
+        const timer = window.setTimeout(() => {
+          setButtonState(button, "idle");
+          if (typeof callback === "function") {
+            callback();
+          }
+          buttonResetTimers.delete(button);
+        }, normalizedDelay);
+        buttonResetTimers.set(button, timer);
+      };
 
       const syncWhatsappField = () => {
         if (!whatsappCheckbox || !whatsappFieldWrapper || !whatsappInput) return;
@@ -461,16 +635,6 @@
         } catch (error) {
           console.error("No se pudo guardar el carrito", error);
         }
-      }
-
-      function showToast(message) {
-        toastLayer.textContent = message;
-        toastLayer.style.opacity = "1";
-        toastLayer.style.transform = "translate(-50%, 0)";
-        setTimeout(() => {
-          toastLayer.style.opacity = "0";
-          toastLayer.style.transform = "translate(-50%, 12px)";
-        }, 2000);
       }
 
       function updateBadge() {
@@ -580,24 +744,63 @@
         }
       });
 
-      clearBtn.addEventListener("click", () => {
-        setCart([]);
-        renderCart();
-        showToast("Carrito vaciado");
-      });
+      if (clearBtn) {
+        setButtonState(clearBtn, clearBtn.dataset.state || "idle");
+        clearBtn.addEventListener("click", () => {
+          if (clearBtn.dataset.state === "loading") return;
+          const currentCart = getCart();
+          cancelButtonIdle(clearBtn);
+          setButtonState(clearBtn, "loading");
+          const delay = currentCart.length ? 420 : 260;
+          window.setTimeout(() => {
+            if (currentCart.length) {
+              setCart([]);
+              renderCart();
+              setButtonState(clearBtn, "success");
+            } else {
+              setButtonState(clearBtn, "error");
+              scheduleButtonIdle(clearBtn, 1600);
+              return;
+            }
+            scheduleButtonIdle(clearBtn, 1800);
+          }, delay);
+        });
+      }
 
-      document
-        .getElementById("checkout-form")
-        .addEventListener("submit", async (event) => {
+      const checkoutForm = document.getElementById("checkout-form");
+      const submitBtn = checkoutForm
+        ? checkoutForm.querySelector('button[type="submit"]')
+        : null;
+
+      if (submitBtn) {
+        setButtonState(submitBtn, submitBtn.dataset.state || "idle");
+      }
+
+      if (checkoutForm) {
+        checkoutForm.addEventListener("submit", async (event) => {
           event.preventDefault();
           const form = event.target;
-          const submitBtn = form.querySelector('button[type="submit"]');
           const cart = getCart();
 
-          if (!cart.length) {
-            showToast("Tu carrito está vacío");
+          if (!submitBtn) {
             return;
           }
+
+          if (!cart.length) {
+            setButtonState(submitBtn, "error");
+            scheduleButtonIdle(submitBtn, 2000, () => {
+              submitBtn.disabled = false;
+            });
+            return;
+          }
+
+          if (submitBtn.dataset.state === "loading") {
+            return;
+          }
+
+          cancelButtonIdle(submitBtn);
+          setButtonState(submitBtn, "loading");
+          submitBtn.disabled = true;
 
           const payload = {
             name: form.name.value.trim(),
@@ -611,10 +814,6 @@
             source: "Servicios - cart.html",
           };
 
-          submitBtn.disabled = true;
-          const originalText = submitBtn.textContent;
-          submitBtn.textContent = "Enviando...";
-
           try {
             const res = await fetch(EMAIL_ENDPOINT, {
               method: "POST",
@@ -626,22 +825,26 @@
 
             if (!res.ok) throw new Error("Solicitud fallida");
 
-            showToast("Pedido enviado. Te contactaremos muy pronto.");
             setCart([]);
             renderCart();
             form.reset();
             syncWhatsappField();
-            setTimeout(() => {
+            setButtonState(submitBtn, "success");
+            scheduleButtonIdle(submitBtn, 2400, () => {
+              submitBtn.disabled = false;
+            });
+            window.setTimeout(() => {
               window.location.href = "index.html";
             }, 2200);
           } catch (error) {
             console.error("Error enviando pedido", error);
-            showToast("No se pudo enviar. Intenta nuevamente.");
-          } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
+            setButtonState(submitBtn, "error");
+            scheduleButtonIdle(submitBtn, 2400, () => {
+              submitBtn.disabled = false;
+            });
           }
         });
+      }
 
       renderCart();
       updateBadge();
