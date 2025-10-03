@@ -3,27 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Servicios para empresas | Canal Datos</title>
+    <title>Canal Datos · Automatización & AI Ops Studio</title>
 
     <meta
       name="description"
-      content="Automatización, integraciones y tableros hechos a medida para que tu empresa ahorre tiempo y tome decisiones con datos confiables."
+      content="Canal Datos es el estudio tech que entrega automatización, analítica y flujos de IA listos para producción en semanas, no meses."
     />
     <meta name="author" content="Canal Datos" />
-    <meta name="theme-color" content="#2563eb" />
+    <meta name="theme-color" content="#030712" />
 
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Servicios digitales listos para tu empresa"
-    />
+    <meta property="og:title" content="Canal Datos · Tech Studio 2025" />
     <meta
       property="og:description"
-      content="Implementa automatizaciones, tableros y flujos de WhatsApp en semanas, no meses."
+      content="Automatizamos operaciones, diseñamos copilotos y encendemos tableros que revelan decisiones."
     />
     <meta
       property="og:image"
-      content="https://dummyimage.com/1200x630/1e3a8a/ffffff&text=Servicios+Empresariales"
+      content="https://dummyimage.com/1200x630/060f24/ffffff&text=Canal+Datos+2025"
     />
     <meta property="og:locale" content="es_PA" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -31,12 +28,12 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚡</text></svg>"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -45,36 +42,31 @@
       window.tailwind.config = {
         theme: {
           extend: {
-            screens: { xs: "475px" },
             colors: {
-              brand: {
-                50: "#eef7ff",
-                100: "#d8ecff",
-                200: "#b9dbff",
-                300: "#8bc4ff",
-                400: "#57a5ff",
-                500: "#3b82f6",
-                600: "#2563eb",
-                700: "#1d4ed8",
-                800: "#1e40af",
-                900: "#1e3a8a",
+              midnight: {
+                50: "#f8fafc",
+                100: "#e2e8f0",
+                200: "#cbd5f5",
+                300: "#94a3f8",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#312e81",
+                800: "#1e1b4b",
+                900: "#111032",
+                950: "#05051a",
               },
-              mint: {
-                50: "#ecfdf5",
-                100: "#d1fae5",
-                200: "#a7f3d0",
-                300: "#6ee7b7",
-                400: "#34d399",
-                500: "#10b981",
-                600: "#059669",
+              aura: {
+                200: "#5eead4",
+                300: "#2dd4bf",
+                400: "#14b8a6",
+                500: "#0d9488",
               },
-            },
-            boxShadow: {
-              card: "0 12px 30px rgba(15, 23, 42, 0.08)",
             },
             fontFamily: {
               sans: [
                 "Inter",
+                "Space Grotesk",
                 "ui-sans-serif",
                 "system-ui",
                 "-apple-system",
@@ -85,10 +77,25 @@
                 "Apple Color Emoji",
                 "Segoe UI Emoji",
               ],
+              display: [
+                "Space Grotesk",
+                "Inter",
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+              ],
+            },
+            boxShadow: {
+              glow: "0 30px 80px rgba(99, 102, 241, 0.45)",
+              glass: "0 18px 40px rgba(15, 23, 42, 0.45)",
             },
             borderRadius: {
               xl: "1rem",
-              "2xl": "1.25rem",
+              '2xl': "1.5rem",
+              pill: "999px",
+            },
+            backdropBlur: {
+              ultra: "22px",
             },
           },
         },
@@ -101,34 +108,53 @@
     ></script>
 
     <style>
+      :root {
+        color-scheme: dark;
+        scroll-behavior: smooth;
+      }
+      body {
+        background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.14), transparent 45%),
+          radial-gradient(circle at 18% 20%, rgba(45, 212, 191, 0.12), transparent 38%),
+          #020617;
+      }
       .skip-link {
         position: absolute;
         left: -999px;
         top: 1rem;
-        padding: 0.5rem 1rem;
-        background: #1e40af;
-        color: #fff;
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 25px rgba(30, 64, 175, 0.35);
+        padding: 0.65rem 1.2rem;
+        background: linear-gradient(120deg, #4f46e5, #14b8a6);
+        color: #f8fafc;
+        border-radius: 999px;
+        box-shadow: 0 18px 40px rgba(79, 70, 229, 0.45);
         transition: left 0.2s ease;
-        z-index: 100;
+        z-index: 200;
+        font-weight: 600;
+        letter-spacing: 0.04em;
       }
       .skip-link:focus {
         left: 1rem;
       }
-      .cline {
-        background: linear-gradient(
-          90deg,
-          rgba(37, 99, 235, 0.18),
-          rgba(16, 185, 129, 0.18)
-        );
-        height: 1px;
+      .halo {
+        position: absolute;
+        inset: auto;
+        pointer-events: none;
+        filter: blur(0);
       }
-      :root {
-        scroll-behavior: smooth;
+      .halo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(99, 102, 241, 0.28), transparent 62%);
+        filter: blur(0);
+        opacity: 0.9;
       }
-      .animate-floating {
-        animation: float 8s ease-in-out infinite;
+      .glow-orb {
+        position: absolute;
+        border-radius: 999px;
+        mix-blend-mode: screen;
+        opacity: 0.75;
+        filter: blur(0);
+        animation: float 12s ease-in-out infinite;
       }
       [data-animate] {
         opacity: 1;
@@ -136,9 +162,10 @@
       }
       .reveal-ready [data-animate] {
         opacity: 0;
-        transform: var(--animate-transform, translateY(18px));
-        transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
-          transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+        transform: var(--animate-transform, translateY(32px));
+        transition:
+          opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+          transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
         transition-delay: var(--animate-delay, 0s);
       }
       .reveal-ready [data-animate].is-visible {
@@ -146,26 +173,26 @@
         transform: none;
       }
       [data-animate='fade-left'] {
-        --animate-transform: translateX(32px);
+        --animate-transform: translateX(48px);
       }
       [data-animate='fade-right'] {
-        --animate-transform: translateX(-32px);
+        --animate-transform: translateX(-48px);
       }
       [data-animate='scale-in'] {
-        --animate-transform: scale(0.96);
+        --animate-transform: scale(0.94);
       }
       .add-to-cart-btn {
         position: relative;
         overflow: hidden;
-        width: 2.75rem;
-        height: 2.75rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(37, 99, 235, 0.22);
+        width: 2.9rem;
+        height: 2.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(99, 102, 241, 0.45);
         background:
-          radial-gradient(circle at 24% 20%, rgba(59, 130, 246, 0.18), transparent 68%),
-          linear-gradient(180deg, #ffffff 0%, #f3f7ff 100%);
-        color: #2563eb;
-        box-shadow: 0 10px 22px rgba(37, 99, 235, 0.14);
+          radial-gradient(circle at 30% 24%, rgba(99, 102, 241, 0.32), transparent 68%),
+          linear-gradient(150deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+        color: #e2e8f0;
+        box-shadow: 0 14px 32px rgba(99, 102, 241, 0.35);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -175,74 +202,62 @@
         backface-visibility: hidden;
       }
       .add-to-cart-btn::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.65), transparent 72%);
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), transparent 70%);
         opacity: 0;
-        transition: opacity 0.25s ease;
+        transition: opacity 0.3s ease;
         pointer-events: none;
-        border-radius: inherit;
-        will-change: opacity;
-      }
-      .add-to-cart-btn::after {
-        border-radius: inherit;
-        will-change: opacity, transform;
       }
       .add-to-cart-btn:hover::before,
       .add-to-cart-btn:focus-visible::before {
         opacity: 1;
       }
-      .add-to-cart-btn > * {
-        position: relative;
-        z-index: 1;
-      }
       .add-to-cart-btn[data-state='idle']:hover {
-        transform: translateY(-2px) scale(1.03);
-        background:
-          radial-gradient(circle at 32% 24%, rgba(59, 130, 246, 0.26), transparent 70%),
-          linear-gradient(135deg, #3b82f6, #2563eb);
-        color: #fff;
-        border-color: rgba(29, 78, 216, 0.6);
-        box-shadow: 0 16px 28px rgba(37, 99, 235, 0.25);
+        transform: translateY(-2px) scale(1.04);
+        background: linear-gradient(140deg, rgba(79, 70, 229, 0.9), rgba(45, 212, 191, 0.9));
+        color: #0f172a;
+        border-color: rgba(45, 212, 191, 0.7);
+        box-shadow: 0 18px 40px rgba(45, 212, 191, 0.35);
       }
       .add-to-cart-btn[data-state='idle']:active {
         transform: translateY(0);
       }
       .add-to-cart-btn[data-state='loading'] {
-        background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-        color: #1f2937;
-        border-color: rgba(148, 163, 184, 0.38);
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(22, 37, 57, 0.92));
+        color: #94a3b8;
+        border-color: rgba(148, 163, 184, 0.4);
         box-shadow: none;
         animation: loadingPulse 1.2s ease-in-out infinite;
       }
       .add-to-cart-btn[data-state='loading']::after {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(120deg, transparent, rgba(148, 163, 184, 0.45), transparent);
+        background: linear-gradient(120deg, transparent, rgba(148, 163, 184, 0.4), transparent);
         animation: shimmer 1s linear infinite;
         opacity: 0.8;
         mix-blend-mode: screen;
       }
       .add-to-cart-btn[data-state='success'] {
-        background: linear-gradient(135deg, #10b981, #0ea971);
-        color: #fff;
-        border-color: rgba(13, 148, 136, 0.55);
-        box-shadow: 0 18px 32px rgba(16, 185, 129, 0.35);
-        transform: translateY(-1px) scale(1.02);
+        background: linear-gradient(140deg, rgba(45, 212, 191, 0.95), rgba(20, 184, 166, 0.95));
+        color: #032c25;
+        border-color: rgba(45, 212, 191, 0.9);
+        box-shadow: 0 22px 44px rgba(45, 212, 191, 0.4);
+        transform: translateY(-1px) scale(1.03);
         animation: successBounce 0.65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
       }
       .add-to-cart-btn[data-state='success']::before {
         opacity: 1;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7), transparent 60%);
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.75), transparent 60%);
         animation: successGlow 0.8s ease-out forwards;
       }
       .add-to-cart-btn[data-state='success']::after {
-        content: '';
+        content: "";
         position: absolute;
-        inset: -14%;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.65), transparent 65%);
+        inset: -18%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.6), transparent 68%);
         animation: pop 0.75s ease-out forwards;
         border-radius: inherit;
       }
@@ -250,11 +265,11 @@
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 0 rgba(148, 163, 184, 0.2);
+          box-shadow: 0 0 0 rgba(148, 163, 184, 0.22);
         }
         50% {
           transform: scale(0.98);
-          box-shadow: 0 0 0 6px rgba(148, 163, 184, 0.25);
+          box-shadow: 0 0 0 7px rgba(148, 163, 184, 0.2);
         }
       }
       @keyframes shimmer {
@@ -270,7 +285,7 @@
           transform: translateY(0) scale(0.96);
         }
         50% {
-          transform: translateY(-2px) scale(1.04);
+          transform: translateY(-3px) scale(1.05);
         }
         100% {
           transform: translateY(-1px) scale(1);
@@ -278,12 +293,12 @@
       }
       @keyframes successGlow {
         0% {
-          opacity: 0.9;
+          opacity: 0.95;
           transform: scale(0.8);
         }
         100% {
           opacity: 0;
-          transform: scale(1.65);
+          transform: scale(1.7);
         }
       }
       @keyframes pop {
@@ -292,9 +307,28 @@
           opacity: 0.85;
         }
         100% {
-          transform: scale(1.7);
+          transform: scale(1.75);
           opacity: 0;
         }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      body.is-loading {
+        opacity: 0;
+      }
+      body.is-ready {
+        opacity: 1;
+        transition: opacity 0.35s ease;
+      }
+      .service-anchor {
+        scroll-margin-top: 120px;
       }
       @media (prefers-reduced-motion: reduce) {
         .add-to-cart-btn,
@@ -303,33 +337,6 @@
           animation: none !important;
           transition-duration: 0.01ms !important;
         }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .reveal-ready [data-animate] {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-      }
-      body.is-loading {
-        opacity: 0;
-      }
-      body.is-ready {
-        opacity: 1;
-        transition: opacity 0.25s ease;
-      }
-      .service-anchor {
-        scroll-margin-top: 110px;
-      }
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-6px);
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
         *::after {
@@ -338,52 +345,40 @@
           transition-duration: 0.01ms !important;
           scroll-behavior: auto !important;
         }
+        .reveal-ready [data-animate] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
       }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800 font-sans antialiased is-loading">
+  <body class="bg-[#020617] text-slate-100 font-sans antialiased is-loading">
     <div x-data="site()" x-init="init()" class="min-h-screen flex flex-col">
-      <a href="#contenido-principal" class="skip-link"
-        >Saltar al contenido principal</a
-      >
+      <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
 
-      <header
-        class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur"
-      >
-        <nav
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          aria-label="Principal"
-        >
+      <header class="sticky top-0 z-50 border-b border-white/10 bg-[#03091d]/85 backdrop-blur-xl">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Principal">
           <div class="flex h-16 items-center justify-between gap-4">
-            <a
-              href="#top"
-              class="text-lg font-extrabold tracking-tight text-slate-900"
-              >Canal Datos</a
-            >
+            <a href="#top" class="flex items-center gap-2 text-sm font-semibold text-slate-200">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-base font-display font-semibold text-white shadow-glow">
+                CD
+              </span>
+              <span class="text-base font-display tracking-tight">Canal Datos</span>
+            </a>
 
             <div class="hidden md:flex items-center gap-2 text-sm font-medium">
-              <a href="#galeria" class="px-3 py-2 rounded-lg hover:bg-slate-100"
-                >Servicios</a
-              >
-              <a
-                href="#detalles"
-                class="px-3 py-2 rounded-lg hover:bg-slate-100"
-                >Detalles</a
-              >
-              <a
-                href="#contacto"
-                class="px-3 py-2 rounded-lg hover:bg-slate-100"
-                >Contacto</a
-              >
+              <a href="#galeria" class="rounded-lg px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white">Servicios</a>
+              <a href="#detalles" class="rounded-lg px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white">Casos</a>
+              <a href="#contacto" class="rounded-lg px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white">Contacto</a>
               <a
                 href="cart.html"
-                class="relative inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-slate-700 transition hover:bg-slate-50"
+                class="relative inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3 py-2 text-slate-200 shadow-[0_1px_0_rgba(255,255,255,0.1)] transition hover:bg-white/10"
               >
                 Carrito
                 <span
                   x-show="cartQty > 0"
                   x-text="cartQty"
-                  class="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#2563eb] px-1 text-[10px] font-extrabold leading-none text-white"
+                  class="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-midnight-500 px-1 text-[10px] font-extrabold leading-none text-white"
                   aria-live="polite"
                 ></span>
               </a>
@@ -393,7 +388,7 @@
               @click="toggleMenu()"
               :aria-expanded="open"
               aria-controls="menu-movil"
-              class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 hover:bg-slate-50"
+              class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
             >
               <span class="sr-only">Abrir menú</span>
               <svg
@@ -430,38 +425,21 @@
           x-show="open"
           x-transition.origin.top
           id="menu-movil"
-          class="md:hidden border-t border-slate-200 bg-white/95"
+          class="md:hidden border-t border-white/10 bg-[#020a1a]/95"
         >
-          <div
-            class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-2 text-sm font-semibold"
-          >
-            <a
-              @click="closeMenu()"
-              href="#galeria"
-              class="rounded-lg px-3 py-2 hover:bg-slate-100"
-              >Servicios</a
-            >
-            <a
-              @click="closeMenu()"
-              href="#detalles"
-              class="rounded-lg px-3 py-2 hover:bg-slate-100"
-              >Detalles</a
-            >
-            <a
-              @click="closeMenu()"
-              href="#contacto"
-              class="rounded-lg px-3 py-2 hover:bg-slate-100"
-              >Contacto</a
-            >
+          <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-2 text-sm font-semibold text-slate-200">
+            <a @click="closeMenu()" href="#galeria" class="rounded-lg px-3 py-2 hover:bg-white/10">Servicios</a>
+            <a @click="closeMenu()" href="#detalles" class="rounded-lg px-3 py-2 hover:bg-white/10">Casos</a>
+            <a @click="closeMenu()" href="#contacto" class="rounded-lg px-3 py-2 hover:bg-white/10">Contacto</a>
             <a
               @click="closeMenu()"
               href="cart.html"
-              class="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-slate-100"
+              class="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-white/10"
             >
               Carrito
               <span
                 x-text="cartQty"
-                class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#2563eb] text-[10px] font-extrabold leading-none text-white"
+                class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-midnight-500 text-[10px] font-extrabold leading-none text-white"
               ></span>
             </a>
           </div>
@@ -469,216 +447,281 @@
       </header>
 
       <main id="contenido-principal" class="grow" tabindex="-1">
-        <section id="top" class="relative overflow-hidden">
-          <div
-            aria-hidden
-            class="absolute inset-x-0 -top-24 h-48 bg-gradient-to-r from-brand-100 to-mint-100 blur-2xl"
-          ></div>
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pb-14">
-            <div class="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-start lg:items-center xl:gap-16">
-              <div data-animate="fade-up">
-                <div class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-brand-600 shadow-sm backdrop-blur-sm">
-                  Nuevas soluciones 2025
+        <section id="top" class="relative overflow-hidden pt-24 pb-20 sm:pt-32">
+          <div aria-hidden class="absolute inset-0">
+            <div class="glow-orb left-[5%] top-[-60px] h-[320px] w-[320px] bg-gradient-to-br from-midnight-500/20 via-midnight-500/10 to-transparent"></div>
+            <div class="glow-orb right-[8%] top-[20%] h-[260px] w-[260px] bg-gradient-to-br from-aura-300/30 via-aura-400/10 to-transparent" style="animation-delay: -3s;"></div>
+            <div class="glow-orb left-[40%] bottom-[-120px] h-[420px] w-[420px] bg-gradient-to-br from-white/8 via-midnight-500/5 to-transparent" style="animation-delay: -6s;"></div>
+          </div>
+
+          <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div class="relative" data-animate="fade-up">
+                <div class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-white/80 backdrop-blur-xl">
+                  Studio tech · 2025
                 </div>
-                <h1
-                  class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight"
-                >
-                  Impulsa tu empresa con
-                  <span class="relative inline-block">
-                    <span class="relative z-10 text-brand-700">
-                      automatizaciones listas para producción
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      class="absolute inset-x-0 bottom-0 h-2 -z-10 rounded-full bg-mint-200/60"
-                    ></span>
-                  </span>
+                <h1 class="mt-6 text-4xl font-display font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                  Diseñamos flujos y copilotos que <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-midnight-300 to-aura-300">encienden tus operaciones</span>
                 </h1>
-                <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-xl">
-                  Diseñamos integraciones, dashboards y flujos que conectan tus datos y reducen tareas manuales desde la primera semana.
+                <p class="mt-6 max-w-xl text-base text-slate-300 sm:text-lg">
+                  Canal Datos combina automatización, ingeniería de datos y capas de IA para que tu compañía tome decisiones con precisión, reduzca tareas manuales y lance experiencias en cuestión de semanas.
                 </p>
-                <div class="mt-6 flex flex-wrap gap-3">
+
+                <div class="mt-8 flex flex-wrap gap-3">
                   <a
                     href="#galeria"
-                    class="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-5 py-3 text-sm sm:text-base font-semibold text-white shadow-card transition hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]"
+                    class="inline-flex items-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-6 py-3 text-sm sm:text-base font-semibold text-slate-950 shadow-glow transition hover:from-midnight-400 hover:to-aura-300"
                   >
-                    Ver servicios
-                    <svg
-                      class="h-4 w-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
+                    Explorar servicios
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </a>
                   <a
                     href="#contacto"
-                    class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm sm:text-base font-semibold text-slate-900 transition hover:bg-slate-100"
+                    class="inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-6 py-3 text-sm sm:text-base font-semibold text-white/90 transition hover:bg-white/10"
                   >
-                    Contactar
+                    Reservar sesión estratégica
                   </a>
                 </div>
+
+                <dl class="mt-10 grid w-full gap-6 sm:grid-cols-3">
+                  <div class="rounded-2xl border border-white/5 bg-white/5 p-5 shadow-glass backdrop-blur-ultra">
+                    <dt class="text-xs uppercase tracking-[0.28em] text-white/60">Go-live</dt>
+                    <dd class="mt-3 text-2xl font-semibold text-white">2-4 semanas</dd>
+                    <p class="mt-1 text-xs text-slate-400">Delivery iterativo en ciclos cortos.</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/5 bg-white/5 p-5 shadow-glass backdrop-blur-ultra">
+                    <dt class="text-xs uppercase tracking-[0.28em] text-white/60">Precisión</dt>
+                    <dd class="mt-3 text-2xl font-semibold text-white">98% datos validados</dd>
+                    <p class="mt-1 text-xs text-slate-400">Pipelines monitorizados con QA automático.</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/5 bg-white/5 p-5 shadow-glass backdrop-blur-ultra">
+                    <dt class="text-xs uppercase tracking-[0.28em] text-white/60">Horas ahorradas</dt>
+                    <dd class="mt-3 text-2xl font-semibold text-white">+120 h / mes</dd>
+                    <p class="mt-1 text-xs text-slate-400">Equipos libres para enfocarse en crecimiento.</p>
+                  </div>
+                </dl>
               </div>
 
-              <aside class="relative md:pl-6 lg:pl-10" data-animate="fade-left">
-                <div
-                  aria-hidden="true"
-                  class="pointer-events-none absolute inset-y-6 left-10 right-0 rounded-3xl bg-gradient-to-br from-brand-100/70 via-white to-mint-100/70 blur-2xl md:left-6 lg:left-4"
-                ></div>
-                <div
-                  class="relative flex h-full min-h-[24rem] flex-col justify-between rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-card backdrop-blur-sm"
-                >
-                  <div>
-                    <span
-                      class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-700"
-                      >Lo que dicen los líderes</span
-                    >
-                    <h2 class="sr-only">Lo que dicen los líderes</h2>
-                    <div class="relative mt-5 pl-6">
-                      <span
-                        aria-hidden="true"
-                        class="absolute left-0 top-0 text-4xl font-semibold text-brand-200"
-                        >“</span
-                      >
-                      <blockquote class="space-y-4 text-sm text-slate-600">
-                        <p class="text-base font-medium italic text-slate-700 sm:text-lg">
-                          La automatización aplicada a un proceso eficiente aumentará la eficiencia. La automatización aplicada a un proceso ineficiente aumentará la ineficiencia.
-                        </p>
-                        <footer class="flex items-center gap-3 text-sm font-semibold text-slate-600">
-                          <span
-                            aria-hidden="true"
-                            class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-xs font-bold uppercase text-white"
-                            >BG</span
-                          >
-                          <div>
-                            <span class="block text-slate-900">Bill Gates</span>
-                            <span class="text-xs font-medium text-slate-400"
-                              >Cofundador, Microsoft</span
-                            >
-                          </div>
-                        </footer>
-                      </blockquote>
+              <div class="relative" data-animate="fade-left">
+                <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-white/6 via-white/3 to-transparent blur-3xl"></div>
+                <div class="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-[rgba(11,15,28,0.78)] shadow-glow backdrop-blur-xl">
+                  <div class="absolute right-6 top-6 inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/70">
+                    Playbook Canal Datos
+                  </div>
+                  <div class="space-y-8 px-8 pb-10 pt-16">
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-3 text-sm font-semibold text-white/80">
+                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-midnight-500/30 text-xs font-bold text-white">1</span>
+                        Descubrimiento dirigido a la métrica crítica
+                      </div>
+                      <p class="text-sm text-slate-300">
+                        Mapear procesos, identificar fricción y diseñar flujo objetivo antes de escribir una línea de código.
+                      </p>
+                    </div>
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-3 text-sm font-semibold text-white/80">
+                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-midnight-500/30 text-xs font-bold text-white">2</span>
+                        Prototipo funcional en entorno real
+                      </div>
+                      <p class="text-sm text-slate-300">
+                        Conectar APIs, bases de datos y canales (Sheets, WhatsApp, Slack) con monitoreo y alertas desde el día uno.
+                      </p>
+                    </div>
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-3 text-sm font-semibold text-white/80">
+                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-midnight-500/30 text-xs font-bold text-white">3</span>
+                        Entrenamiento, entrega y handoff documentado
+                      </div>
+                      <p class="text-sm text-slate-300">
+                        Manual interactivo, videos cortos y soporte durante 7 días para garantizar adopción.
+                      </p>
+                    </div>
+                    <div class="rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-4 text-sm text-emerald-200/90">
+                      <p>
+                        Resultado típico: procesos críticos automatizados con visibilidad en vivo y equipo entrenado para iterar sin depender de terceros.
+                      </p>
                     </div>
                   </div>
-                  <div
-                    class="mt-10 rounded-2xl border border-brand-100/60 bg-brand-50/60 p-6 text-sm text-brand-900 shadow-inner"
-                  >
-                    <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-700">
-                      Clave del mensaje
-                    </h3>
-                    <p class="mt-3 leading-snug text-brand-900">
-                      El recordatorio de Gates es simple: automatizar solo reporta beneficios cuando el proceso es sólido. Toda la propuesta de Canal Datos parte de mapear el flujo actual, eliminar fricción y recién ahí automatizar, para que la tecnología mejore lo que ya funciona.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="relative py-14 sm:py-16">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+              class="grid gap-6 md:grid-cols-3"
+              data-animate="fade-up"
+              data-animate-delay="0.05s"
+            >
+              <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-ultra">
+                <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">IA aplicada</h3>
+                <p class="mt-3 text-base font-semibold text-white">Copilotos y asistentes conectados a tus datos</p>
+                <p class="mt-3 text-sm text-slate-300">
+                  UX conversacional y flujos que usan modelos generativos para resolver tickets, preparar reportes o guiar ventas sin perder control.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-ultra">
+                <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">Integraciones</h3>
+                <p class="mt-3 text-base font-semibold text-white">APIs, ERPs y plataformas unificadas</p>
+                <p class="mt-3 text-sm text-slate-300">
+                  Conectamos ERP, POS, e-commerce y comunicaciones para operar con datos confiables y automatizar backoffice.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-ultra">
+                <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">Inteligencia operativa</h3>
+                <p class="mt-3 text-base font-semibold text-white">Dashboards vivos & alertas inteligentes</p>
+                <p class="mt-3 text-sm text-slate-300">
+                  Tableros accionables, alertas proactivas y seguimiento continuo para anticipar desvíos y reducir fricción.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="relative py-16 sm:py-20">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <article class="space-y-6" data-animate="fade-up">
+                <p class="text-xs font-semibold uppercase tracking-[0.32em] text-white/60">Principio operativo</p>
+                <h2 class="text-3xl font-display font-semibold text-white sm:text-4xl">
+                  "La automatización aplicada a un proceso eficiente amplifica la eficiencia."
+                </h2>
+                <p class="text-sm text-slate-300">
+                  Este mantra guía cada proyecto. Antes de automatizar, afinamos el flujo manual, definimos responsables y activamos métricas que importan. Así garantizamos que la tecnología acelera lo que ya funciona y no multiplica fricción.
+                </p>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
+                    <p class="text-sm font-semibold text-white/90">Auditoría + diseño</p>
+                    <p class="mt-2 text-xs text-slate-400">Mapeo del proceso actual, definición de estados, responsables y excepciones.</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
+                    <p class="text-sm font-semibold text-white/90">Automatización con control</p>
+                    <p class="mt-2 text-xs text-slate-400">Monitor y alertas integradas. Documentación lista para nuevas iteraciones.</p>
+                  </div>
+                </div>
+              </article>
+
+              <aside
+                class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-glass backdrop-blur-ultra"
+                data-animate="fade-left"
+              >
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-80"></div>
+                <div class="relative space-y-6">
+                  <blockquote class="text-base text-slate-100/90">
+                    <p>
+                      "La primera regla de la automatización es que la tecnología aplicada a un proceso eficiente amplificará la eficiencia."
+                    </p>
+                  </blockquote>
+                  <footer class="text-sm text-slate-300">
+                    — Bill Gates, cofundador de Microsoft
+                  </footer>
+                  <div class="rounded-2xl border border-midnight-500/30 bg-midnight-500/10 p-4 text-sm text-midnight-100">
+                    <h3 class="text-xs font-semibold uppercase tracking-[0.24em] text-midnight-200">Cómo lo aplico</h3>
+                    <p class="mt-3 text-sm text-midnight-100/90">
+                      Analizo tu proceso actual, elimino pasos redundantes y luego automatizo. Resultado: menos retrabajo, más claridad y equipos que confían en los datos.
                     </p>
                   </div>
                 </div>
               </aside>
             </div>
           </div>
-          <div class="cline"></div>
         </section>
 
-        <section id="galeria" class="py-12 sm:py-16">
+        <section id="galeria" class="relative py-16 sm:py-20">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-animate="fade-up">
-            <h2
-              class="text-xl sm:text-2xl font-bold text-slate-900 text-center"
-            >
-              Vista Rápida de Servicios
-            </h2>
-            <p class="mt-1 text-center text-sm sm:text-base text-slate-600">
-              Añade al carrito o revisa más detalles.
-            </p>
+            <div class="mx-auto max-w-3xl text-center">
+              <h2 class="text-3xl font-display font-semibold text-white">Servicios listos para activar</h2>
+              <p class="mt-3 text-sm text-slate-300">
+                Filtra por categoría, revisa el detalle y agrégalo al carrito para coordinar la implementación.
+              </p>
+            </div>
 
-            <div class="mt-6">
-              <div class="overflow-x-auto">
-                <div
-                  class="flex min-w-max items-center gap-2 pb-1 xs:justify-center"
-                  role="radiogroup"
-                  aria-label="Filtrar por categoría"
-                >
-                  <template x-for="option in categoryOptions" :key="option">
-                    <button
-                      type="button"
-                      @click="setCategory(option)"
-                      :aria-pressed="activeCategory === option"
-                      class="inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold transition sm:text-sm"
-                      :class="
-                        activeCategory === option
-                          ? 'border-[#2563eb] bg-[#2563eb] text-white shadow-sm'
-                          : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800'
-                      "
-                    >
-                      <span x-text="option"></span>
-                    </button>
-                  </template>
-                </div>
+            <div class="mt-8 overflow-x-auto">
+              <div class="flex min-w-max items-center gap-2 pb-2 xs:justify-center" role="radiogroup" aria-label="Filtrar por categoría">
+                <template x-for="option in categoryOptions" :key="option">
+                  <button
+                    type="button"
+                    @click="setCategory(option)"
+                    :aria-pressed="activeCategory === option"
+                    class="inline-flex items-center rounded-pill border px-3.5 py-1.5 text-xs font-semibold transition sm:text-sm"
+                    :class="
+                      activeCategory === option
+                        ? 'border-midnight-300 bg-white text-slate-900'
+                        : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
+                    "
+                  >
+                    <span x-text="option"></span>
+                  </button>
+                </template>
               </div>
             </div>
 
-            <div
-              class="mt-10 grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-5xl lg:max-w-6xl mx-auto"
-            >
+            <div class="mt-12 grid grid-cols-1 gap-5 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <template x-for="(card, index) in filteredGallery" :key="card.name">
                 <article
                   data-animate="fade-up"
-                  x-bind:data-animate-delay="(index * 0.06) + 's'"
-                  class="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-card transition sm:flex-row sm:items-center sm:gap-3 sm:rounded-xl sm:bg-white/80 sm:p-3 sm:shadow-sm lg:p-5 lg:gap-4"
+                  x-bind:data-animate-delay="(index * 0.05) + 's'"
+                  class="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 shadow-glass backdrop-blur-ultra transition hover:border-white/20 hover:bg-white/10"
                 >
-                  <div class="flex min-w-0 flex-1 flex-col gap-1 text-left">
-                    <h3
-                      class="text-sm font-semibold text-slate-900 sm:text-base"
-                      x-text="card.title"
-                    ></h3>
+                  <div class="flex min-w-0 flex-1 flex-col gap-2 text-left">
+                    <p class="text-xs font-semibold uppercase tracking-[0.28em] text-white/60" x-text="card.category"></p>
+                    <h3 class="text-base font-semibold text-white" x-text="card.title"></h3>
+                    <p class="text-sm text-slate-400" x-text="card.name"></p>
                   </div>
-                  <a
-                    :href="card.href"
-                    class="inline-flex items-center justify-center gap-2 self-stretch rounded-full border border-brand-100 bg-white/80 px-3 py-2 text-sm font-semibold text-brand-700 shadow-sm transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:self-auto sm:ml-auto sm:px-4 sm:py-2"
-                  >
-                    <span>Ver detalles</span>
-                    <svg
-                      class="h-3.5 w-3.5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
+                  <div class="flex items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      class="inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white/80 transition hover:bg-white/20"
+                      @click="add(card.name, card.price)"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.293 4.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 1 1-1.414-1.414L10.086 10 7.293 7.207a1 1 0 0 1 0-1.414z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </a>
+                      Añadir
+                      <span class="rounded-pill bg-white/10 px-2 py-0.5 text-[11px] text-white/70">USD <span x-text="card.price"></span></span>
+                    </button>
+                    <a
+                      :href="card.href"
+                      class="inline-flex items-center gap-2 rounded-pill border border-midnight-500/30 bg-midnight-500/20 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-midnight-400/30"
+                    >
+                      Ver detalles
+                      <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.293 4.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 1 1-1.414-1.414L10.086 10 7.293 7.207a1 1 0 0 1 0-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
                 </article>
               </template>
             </div>
           </div>
         </section>
 
-        <div class="cline"></div>
-
-        <section id="detalles" class="bg-white/70 py-14 sm:py-16">
+        <section id="detalles" class="relative py-16 sm:py-20">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-animate="fade-up">
-            <div class="mx-auto max-w-2xl text-center">
-              <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">
-                Casos de uso con impacto tangible
-              </h2>
-              <p class="mt-2 text-sm sm:text-base text-slate-600">
-                Cada servicio incluye documentación, video de soporte y 7 días
-                de acompañamiento posterior a la entrega.
+            <div class="mx-auto max-w-3xl text-center">
+              <h2 class="text-3xl font-display font-semibold text-white">Casos de uso con impacto inmediato</h2>
+              <p class="mt-3 text-sm text-slate-300">
+                Cada entrega incluye documentación, video de soporte y 7 días de acompañamiento para garantizar adopción y resultados.
               </p>
             </div>
 
-            <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-              <!-- Servicio 1 -->
+            <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
               <article
                 id="servicio1"
                 data-animate="fade-up"
-                data-animate-delay="0.05s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.04s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/15 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Automatización de Reportes Financieros (ERP/POS)', 420))"
@@ -686,7 +729,7 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
                   <svg
                     x-cloak
@@ -697,21 +740,8 @@
                     fill="none"
                     aria-hidden="true"
                   >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
                   <svg
                     x-cloak
@@ -722,11 +752,7 @@
                     fill="currentColor"
                     aria-hidden="true"
                   >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
                   <svg
                     x-cloak
@@ -742,84 +768,42 @@
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      Finanzas
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Automatización de Reportes Financieros (ERP/POS)
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $420
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Finanzas</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Automatización de Reportes Financieros (ERP/POS)</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $420</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  En muchas empresas, al cierre mensual o semanal alguien
-                  exporta ventas y gastos del ERP/POS. Esos archivos suelen
-                  traer columnas innecesarias, datos mal formateados y miles de
-                  filas. El equipo debe limpiar, consolidar y armar tablas
-                  dinámicas en Excel cada vez. Este proceso consume horas y está
-                  lleno de riesgos de error: una fórmula mal copiada puede
-                  distorsionar todo el reporte. Como resultado, la gerencia
-                  recibe la información tarde y pierde capacidad de reaccionar.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Al cierre mensual o semanal, alguien exporta ventas y gastos del ERP/POS. Las planillas llegan desordenadas y consumen horas en limpieza manual antes de preparar reportes, con riesgo de errores que atrasan decisiones.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Transformo ese proceso en un flujo automático donde los datos
-                  llegan organizados y los reportes se generan confiables, sin
-                  repetir tareas manuales.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Pipeline automatizado que normaliza los archivos, consolida la data y entrega dashboards listos con alertas cuando algo se desvía.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Supermercado que invertía 2–3 horas diarias en limpiar
-                    exportaciones del POS → ahora obtiene reportes claros en
-                    minutos.
-                  </li>
-                  <li>
-                    Empresa de retail que demoraba 2 días en su cierre mensual
-                    → ahora lo hace en menos de 2 horas con datos consistentes.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Supermercado redujo 3 horas diarias de limpieza manual → reportes claros en minutos.</li>
+                  <li>Retail bajó cierre mensual de 2 días a menos de 2 horas con datos consistentes.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Cierres más rápidos y menos desgastantes.</li>
-                  <li>Datos confiables y libres de errores manuales.</li>
-                  <li>Decisiones oportunas basadas en información clara.</li>
-                  <li>Garantía: 50% inicial, devolución si no cumple lo esperado.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Reportes disponibles cada mañana.</li>
+                  <li>Alertas automáticas cuando una tienda se sale del rango esperado.</li>
+                  <li>Histórico limpio para forecasting.</li>
+                  <li>Pago 50% al inicio, balance tras validar entregables.</li>
                 </ul>
               </article>
 
-              <!-- Servicio 2 -->
               <article
                 id="servicio2"
                 data-animate="fade-up"
-                data-animate-delay="0.12s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.08s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-aura-400/20 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Integración E‑commerce con WhatsApp', 220))"
@@ -827,137 +811,56 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      E‑commerce
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Integración E‑commerce con WhatsApp
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $220
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">E-commerce</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Integración E‑commerce con WhatsApp</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $220</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Cuando llega una venta en Shopify o WooCommerce, muchos
-                  equipos todavía copian los datos del pedido y los pegan en
-                  WhatsApp para confirmar con el cliente o avisar al área de
-                  envíos. Esto genera retrasos, mensajes olvidados y mala
-                  experiencia de compra.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Equipos de ventas reciben consultas por WhatsApp sin contexto: hay que hacer pantallazos del pedido, revisar stock manualmente y actualizar planillas al final del día.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Conecto tu tienda online con WhatsApp para que
-                  confirmaciones, notificaciones de pago y avisos de envío se
-                  envíen automáticamente, sin depender de la acción manual de tu
-                  equipo.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Conecto tu tienda con WhatsApp: el cliente recibe estado del pedido, seguimiento y upsells; el equipo ve cada acción registrada en Sheets o CRM.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Tienda Shopify que confirmaba pedidos uno por uno → ahora
-                    cada cliente recibe confirmación instantánea.
-                  </li>
-                  <li>
-                    E-commerce WooCommerce que notificaba envíos manualmente →
-                    ahora el sistema avisa de inmediato al cliente.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Integración Shopify + WhatsApp con confirmación de pagos y envío automático de facturas.</li>
+                  <li>Carritos abandonados convertidos en mensajes con inventario actualizado.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Atención inmediata que mejora la experiencia del cliente.</li>
-                  <li>Procesos fluidos sin errores humanos.</li>
-                  <li>Más ventas cerradas gracias a comunicación rápida.</li>
-                  <li>Garantía: 50% inicial, devolución si no quedas conforme.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Clientes informados en cada paso.</li>
+                  <li>Registro automático de conversaciones y ventas.</li>
+                  <li>Incremento en tickets cerrados vía chat.</li>
+                  <li>Pago 50% al inicio, balance tras validar entregables.</li>
                 </ul>
               </article>
 
-              <!-- Servicio 3 -->
               <article
                 id="servicio3"
                 data-animate="fade-up"
-                data-animate-delay="0.18s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.12s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/12 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Tablero de Cuentas por Cobrar con Alertas', 260))"
@@ -965,138 +868,56 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      Finanzas
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Tablero de Cuentas por Cobrar con Alertas
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $260
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Finanzas</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Tablero de Cuentas por Cobrar con Alertas</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $260</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Los aging reports de cuentas por cobrar existen, pero en la
-                  práctica pocos los revisan a diario. Las facturas vencidas se
-                  acumulan y el equipo de finanzas no prioriza bien a quién
-                  cobrar primero. Eso termina afectando el flujo de caja y
-                  aumenta el riesgo de morosidad.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Los equipos cobran tarde porque la información vive en correos o Excel dispersos. No existe visibilidad de prioridades ni recordatorios inteligentes.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Creo un tablero visual que clasifica a los clientes por
-                  antigüedad de deuda y genera alertas automáticas para que el
-                  equipo sepa exactamente a quién contactar cada semana.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Dashboard que consolida cuentas, clasifica riesgos y envía alertas proactivas según la política de cobranza.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Distribuidor con clientes de 90+ días vencidos sin
-                    seguimiento → ahora recibe alertas semanales con la lista
-                    priorizada.
-                  </li>
-                  <li>
-                    Empresa de servicios que usaba un Excel plano sin
-                    seguimiento → ahora gestiona cobranzas con un tablero visual
-                    y recordatorios automáticos.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Distribuidor redujo mora >30 días de 42% a 18% en 6 semanas.</li>
+                  <li>Equipos reciben WhatsApp automático con resumen diario de pendientes críticos.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Mejor control del flujo de caja.</li>
-                  <li>Cobranza más ordenada y efectiva.</li>
-                  <li>Menos facturas olvidadas o atrasadas.</li>
-                  <li>Garantía: 50% inicial, devolución si no cumple el resultado.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Prioridades claras cada mañana.</li>
+                  <li>Plantillas automáticas para contactar clientes.</li>
+                  <li>Histórico de promesas de pago.</li>
+                  <li>Pago 50% al inicio, balance al desplegar.</li>
                 </ul>
               </article>
 
-              <!-- Servicio 4 -->
               <article
                 id="servicio4"
                 data-animate="fade-up"
-                data-animate-delay="0.24s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.16s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/18 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Chatbot en WhatsApp', 320))"
@@ -1104,137 +925,56 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      Atención al cliente
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Chatbot en WhatsApp
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $320
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">WhatsApp</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Chatbot en WhatsApp</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $320</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Cuando el volumen de consultas crece, el equipo no alcanza a
-                  responder todo. Los clientes esperan horas para respuestas
-                  básicas (horarios, productos, estado de pedidos), lo que
-                  genera frustración y pérdida de ventas.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Soportar clientes 24/7 sin contratar más agentes, manteniendo tono de marca y escalamiento cuando se requiere humano.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Implemento un chatbot en WhatsApp que responde de inmediato
-                  preguntas frecuentes, guía a los clientes en flujos simples y
-                  sabe cuándo pasar la conversación a un agente humano.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Chatbot con lógica condicional, integración a inventario y handoff instantáneo a agentes con contexto completo.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Restaurante que recibía decenas de mensajes diarios
-                    preguntando por menú y horarios → ahora esas consultas se
-                    resuelven solas.
-                  </li>
-                  <li>
-                    Tienda de tecnología que perdía ventas fuera de horario
-                    laboral → ahora atiende 24/7 y pasa lo urgente al equipo
-                    humano.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Centro médico con agenda automática y recordatorios en WhatsApp.</li>
+                  <li>Retail que atiende catálogo, stock y seguimiento de envíos en un solo hilo.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Respuestas inmediatas todos los días.</li>
-                  <li>Menos carga operativa para tu equipo.</li>
-                  <li>Experiencia más profesional para tus clientes.</li>
-                  <li>Garantía: 50% inicial, devolución si no quedas satisfecho.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Disponibilidad 24/7.</li>
+                  <li>Analytics para mejorar guiones y conversiones.</li>
+                  <li>Escalamientos con contexto completo.</li>
+                  <li>Pago 50% al inicio, balance tras validar.</li>
                 </ul>
               </article>
 
-              <!-- Servicio 5 -->
               <article
                 id="servicio5"
                 data-animate="fade-up"
-                data-animate-delay="0.30s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.2s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-aura-300/20 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Investigación de Plugins & Apps (Shopify / WooCommerce)', 200))"
@@ -1242,136 +982,56 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      E‑commerce
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Investigación de Plugins & Apps (Shopify / WooCommerce)
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $200
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">E-commerce</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Investigación de Plugins & Apps (Shopify / WooCommerce)</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $200</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Muchos e-commerce instalan apps sin un criterio claro. Esto
-                  hace que la tienda se vuelva lenta, se pague por funciones
-                  duplicadas o se invierta en herramientas que los clientes ni
-                  usan.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Elegir apps o plugins sin validar soporte, costos ocultos o compatibilidad puede frenar ventas y crear deuda técnica.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Analizo tus objetivos y entrego un comparativo claro con las
-                  mejores opciones de apps, priorizadas por costo, beneficio y
-                  compatibilidad con tu negocio.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Curaduría comparativa con pruebas reales, escenarios de costo y recomendaciones claras según tu stack.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Tienda que tenía 10 apps instaladas, muchas inútiles → ahora
-                    solo usa 3 esenciales, reduciendo costos y mejorando
-                    velocidad.
-                  </li>
-                  <li>
-                    E-commerce que pagaba por dos apps con funciones iguales →
-                    ahora usa una sola solución más completa y eficiente.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Evaluación de 12 apps de loyalty para retail y set-up del top 2.</li>
+                  <li>Comparativa de plugins de logística con matriz de SLA y costos.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Menos gasto en apps innecesarias.</li>
-                  <li>Mejor rendimiento de la tienda.</li>
-                  <li>Decisiones basadas en análisis, no prueba-error.</li>
-                  <li>Garantía: 50% inicial, devolución si no cumple el resultado.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Decisiones informadas sin perder tiempo probando.</li>
+                  <li>Escenarios de expansión planificados.</li>
+                  <li>Implementación inicial incluida.</li>
+                  <li>Pago 50% al inicio, balance al entregar.</li>
                 </ul>
-            </article>
+              </article>
 
-              <!-- Servicio 6 -->
               <article
                 id="servicio6"
                 data-animate="fade-up"
-                data-animate-delay="0.36s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.24s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/15 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Recordatorios Automáticos en Google Sheets', 180))"
@@ -1379,135 +1039,56 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      Operaciones
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Recordatorios Automáticos en Google Sheets
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $180
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Automatización</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Recordatorios Automáticos en Google Sheets</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $180</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Los equipos anotan fechas clave en Google Sheets (contratos,
-                  mantenimientos, tareas), pero como nadie revisa la hoja a
-                  diario, esas fechas pasan desapercibidas. El resultado: tareas
-                  críticas vencidas y plazos incumplidos.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Los equipos viven pegados a hojas de cálculo con fechas críticas y miden seguimiento manualmente → se pierden plazos importantes.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Convierto tu Google Sheet en un sistema que envía
-                  recordatorios automáticos por email o calendario según la fecha
-                  indicada en cada fila.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Flujos que envían correos o WhatsApp automáticos según fechas, responsables y estados definidos en Sheets.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Agencia que olvidaba renovaciones de contratos → ahora
-                    recibe recordatorios antes de cada vencimiento.
-                  </li>
-                  <li>
-                    Empresa que llevaba control de mantenimientos → ahora recibe
-                    avisos automáticos sin necesidad de revisar la hoja.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Constructora que recibe alertas de vencimiento de garantías y pólizas.</li>
+                  <li>Equipo comercial con recordatorios de seguimiento a prospectos según etapa.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Nunca más fechas críticas olvidadas.</li>
-                  <li>Todo centralizado en la misma hoja.</li>
-                  <li>Mejor organización sin depender de la memoria del equipo.</li>
-                  <li>Garantía: 50% inicial, devolución si no cumple lo esperado.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>No se pierden plazos críticos.</li>
+                  <li>Responsables claros en cada alerta.</li>
+                  <li>Histórico de seguimiento para auditorías.</li>
+                  <li>Pago 50% al inicio, balance al entregar.</li>
                 </ul>
               </article>
 
-              <!-- Servicio 7 -->
               <article
                 id="servicio7"
                 data-animate="fade-up"
-                data-animate-delay="0.42s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.28s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/18 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Integración de Emails con Google Sheets', 200))"
@@ -1515,135 +1096,56 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      Automatización
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Integración de Emails con Google Sheets
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $200
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Integraciones</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Integración de Emails con Google Sheets</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $200</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Los correos electrónicos contienen información vital (pedidos,
-                  facturas, leads), pero al quedar en la bandeja se pierden o se
-                  copian a mano a Excel. Eso consume horas y multiplica los
-                  errores.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Correos con pedidos, solicitudes o tickets quedan archivados en bandejas personales y requieren transcripción manual.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Centralizo la información de los correos directamente en
-                  Google Sheets, lista para análisis o seguimiento sin necesidad
-                  de transcribir.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Extraigo campos clave, clasifico por etiquetas y guardo cada mensaje estructurado en Sheets o bases de datos.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Distribuidor que copiaba pedidos de emails a Excel → ahora
-                    cada pedido aparece automáticamente en Sheets.
-                  </li>
-                  <li>
-                    Agencia que recibía leads de campañas por correo → ahora los
-                    contactos llegan a un tablero organizado en tiempo real.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Agencia recibe briefs por email → cada uno inicia automáticamente un registro en CRM.</li>
+                  <li>Proveedores envían facturas → se archiv an con status y responsables asignados.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Ahorro de tiempo en tareas repetitivas.</li>
-                  <li>Menos errores humanos en la captura de datos.</li>
-                  <li>Información clave centralizada y lista para usar.</li>
-                  <li>Garantía: 50% inicial, devolución si no cumple tus expectativas.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Información ordenada y accionable.</li>
+                  <li>Clasificación automática por prioridad.</li>
+                  <li>Reportería del canal email lista sin esfuerzo.</li>
+                  <li>Pago 50% inicial, balance al entregar.</li>
                 </ul>
               </article>
 
-              <!-- Servicio 8 -->
               <article
                 id="servicio8"
                 data-animate="fade-up"
-                data-animate-delay="0.48s"
-                class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-card service-anchor"
+                data-animate-delay="0.32s"
+                class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-glass service-anchor"
               >
+                <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/18 via-transparent to-transparent"></div>
                 <button
                   type="button"
                   x-data="addButton(() => add('Digitalización Automática de Órdenes (OCR + Google Sheets)', 280))"
@@ -1651,170 +1153,113 @@
                   :disabled="state === 'loading'"
                   :aria-busy="state === 'loading'"
                   :data-state="state"
-                  class="add-to-cart-btn absolute top-5 right-5 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-70 sm:top-6 sm:right-6"
+                  class="add-to-cart-btn absolute top-6 right-6"
                 >
-                  <svg
-                    x-cloak
-                    x-show="state === 'loading'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 animate-spin text-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="3"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      d="M4 12a8 8 0 0 1 8-8"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    ></path>
+                  <svg x-cloak x-show="state === 'loading'" x-transition.opacity.scale.95 class="h-5 w-5 animate-spin text-current" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                    <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'success'"
-                    x-transition.opacity.scale.95
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
+                  <svg x-cloak x-show="state === 'success'" x-transition.opacity.scale.95 class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg
-                    x-cloak
-                    x-show="state === 'idle'"
-                    class="h-5 w-5 text-current"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    aria-hidden="true"
-                  >
+                  <svg x-cloak x-show="state === 'idle'" class="h-5 w-5 text-current" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
                   </svg>
                   <span class="sr-only" x-text="currentLabel()" aria-live="polite"></span>
                 </button>
-                <header
-                  class="flex flex-wrap items-center justify-between gap-4"
-                >
-                  <div class="flex-1 min-w-[220px] pr-16">
-                    <p
-                      class="text-xs font-semibold uppercase tracking-wide text-brand-600"
-                    >
-                      Operaciones
-                    </p>
-                    <h3 class="mt-1 text-lg font-bold text-slate-900">
-                      Digitalización Automática de Órdenes (OCR + Google Sheets)
-                    </h3>
-                    <p class="mt-2 text-sm sm:text-base font-semibold text-brand-600">
-                      USD $280
-                    </p>
+                <header class="flex flex-wrap items-start justify-between gap-4">
+                  <div class="flex-1 min-w-[220px] pr-12">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Automatización</p>
+                    <h3 class="mt-2 text-xl font-semibold text-white">Digitalización Automática de Órdenes (OCR + Google Sheets)</h3>
+                    <p class="mt-2 text-sm font-semibold text-midnight-200">USD $280</p>
                   </div>
                 </header>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  🚨 El reto
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Muchas órdenes de compra o venta llegan en PDF o imágenes
-                  escaneadas. Para procesarlas, alguien debe reescribir línea por
-                  línea en Excel o en el ERP. Es un trabajo tedioso, lento y con
-                  alto riesgo de errores que impactan la operación.
+                <h4 class="mt-6 text-sm font-semibold text-white/90">🚨 El reto</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Órdenes en PDF o imágenes se transcriben manualmente al ERP, lo que consume horas y genera errores en inventario o facturación.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ⚡ Mi solución
-                </h4>
-                <p class="mt-2 text-sm text-slate-700">
-                  Configuro un flujo que lee los PDFs y convierte su contenido
-                  en tablas editables en Google Sheets, listas para validar o
-                  importar al sistema.
+                <h4 class="mt-5 text-sm font-semibold text-white/90">⚡ Mi solución</h4>
+                <p class="mt-2 text-sm text-slate-300">
+                  Flujo OCR que extrae datos clave, valida campos y los entrega listos para revisión e importación en Sheets o base de datos.
                 </p>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  📌 Ejemplos
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>
-                    Distribuidor que recibía órdenes en PDF de supermercados →
-                    ahora las ve cargadas en Sheets sin transcripción manual.
-                  </li>
-                  <li>
-                    Empresa que procesaba 50 facturas de proveedores a la semana
-                    → ahora tiene los datos extraídos automáticamente y revisa
-                    solo los detalles críticos.
-                  </li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">📌 Ejemplos</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Distribuidor recibe órdenes PDF → las ve en Sheets, lista para aprobar o rechazar.</li>
+                  <li>Empresa procesa 50 facturas semanales → datos extraídos automáticamente con verificación.</li>
                 </ul>
-
-                <h4 class="mt-5 text-sm font-semibold text-slate-900">
-                  ✅ Beneficios
-                </h4>
-                <ul
-                  class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-700"
-                >
-                  <li>Ahorro de horas en digitación manual.</li>
-                  <li>Reducción de errores en los registros.</li>
-                  <li>Flujo de trabajo más rápido y ordenado.</li>
-                  <li>Garantía: 50% inicial, devolución si no cumple lo esperado.</li>
+                <h4 class="mt-5 text-sm font-semibold text-white/90">✅ Beneficios</h4>
+                <ul class="mt-2 space-y-1.5 list-disc pl-5 text-sm text-slate-300">
+                  <li>Ahorro de horas manuales.</li>
+                  <li>Menos errores en registros.</li>
+                  <li>Auditoría con trazabilidad completa.</li>
+                  <li>Pago 50% al inicio, balance al finalizar.</li>
                 </ul>
               </article>
             </div>
           </div>
         </section>
 
-        <section id="contacto" class="py-14 sm:py-16">
-          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-animate="fade-up">
-            <div
-              class="rounded-3xl border border-slate-200 bg-white p-8 shadow-card"
-            >
-              <h2 class="text-2xl font-bold text-slate-900 text-center">
-                Contáctame
-              </h2>
-              <p class="mt-3 text-center text-sm sm:text-base text-slate-600">
-                ¿Tienes dudas o quieres más información? Escríbeme.
+        <section class="relative py-16 sm:py-20">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" data-animate="fade-up">
+            <div class="mx-auto max-w-3xl text-center">
+              <h2 class="text-3xl font-display font-semibold text-white">Stack preferido</h2>
+              <p class="mt-3 text-sm text-slate-300">
+                Herramientas probadas para lanzar soluciones robustas sin inflar costos.
               </p>
-              <div
-                class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
-              >
-                <a
-                  href="mailto:ezratawachi@gmail.com"
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#059669] px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#047857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#047857] sm:w-auto"
-                  >✉️ Enviar un correo</a
-                >
-                <a
-                  href="https://wa.me/50764931573"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 transition hover:bg-slate-100 sm:w-auto"
-                >
-                  💬 Escríbeme por WhatsApp
-                </a>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">Google Cloud</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">Apps Script</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">Supabase</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">Make / n8n</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">OpenAI & Gemini</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">WhatsApp Cloud API</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">Looker Studio</span>
+              <span class="inline-flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200">Notion</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="contacto" class="relative py-16 sm:py-20">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-animate="fade-up">
+            <div class="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/5 p-10 shadow-glass backdrop-blur-ultra">
+              <div class="absolute inset-0 bg-gradient-to-br from-midnight-500/15 via-transparent to-transparent opacity-90"></div>
+              <div class="relative space-y-6 text-center">
+                <p class="text-xs font-semibold uppercase tracking-[0.32em] text-white/60">Próximo paso</p>
+                <h2 class="text-3xl font-display font-semibold text-white">Cuéntame qué quieres desbloquear</h2>
+                <p class="text-sm text-slate-300">
+                  Agenda una llamada, envía un correo o escribe por WhatsApp para revisar tu caso y alinear entregables.
+                </p>
+                <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                  <a
+                    href="mailto:ezratawachi@gmail.com"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-glow transition hover:from-midnight-400 hover:to-aura-300 sm:w-auto"
+                  >
+                    ✉️ Enviar correo
+                  </a>
+                  <a
+                    href="https://wa.me/50764931573"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-pill border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20 sm:w-auto"
+                  >
+                    💬 Hablar por WhatsApp
+                  </a>
+                </div>
+                <p class="text-xs text-slate-400">
+                  Tiempo de respuesta promedio: &lt;24 h.
+                </p>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer class="mt-auto border-t border-slate-200 bg-white/80">
-        <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs sm:text-sm text-slate-600"
-        >
-          © 2025 Canal Datos · Servicios digitales para empresas en Panamá.
+      <footer class="mt-auto border-t border-white/10 bg-[#03091d]/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs sm:text-sm text-slate-400">
+          © 2025 Canal Datos · Automatización y analítica para empresas en Panamá.
         </div>
       </footer>
     </div>
@@ -2019,8 +1464,12 @@
             .querySelectorAll(
               ".reveal-ready [data-animate]:not(.is-visible)"
             )
-            .forEach((element) => markVisible(element));
-        }, 1200);
+            .forEach((element) => {
+              if (isInViewport(element)) {
+                markVisible(element);
+              }
+            });
+        }, 250);
       }
 
       function site() {
@@ -2157,9 +1606,7 @@
           },
         };
       }
-    </script>
 
-    <script>
       window.addEventListener("load", () => {
         document.body.classList.remove("is-loading");
         document.body.classList.add("is-ready");
