@@ -156,6 +156,30 @@
         filter: blur(0);
         animation: float 12s ease-in-out infinite;
       }
+      .headline-accent {
+        position: relative;
+        display: inline-block;
+        background-image: linear-gradient(110deg, #e0f2fe, #60a5fa 35%, #2dd4bf 65%, #e0f2fe 90%);
+        background-size: 220% 100%;
+        background-position: 0% 50%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: headlineSheen 9s ease-in-out infinite;
+        text-shadow: 0 0 18px rgba(59, 130, 246, 0.25);
+        padding-bottom: 0.12em;
+      }
+      .headline-accent::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background: linear-gradient(110deg, rgba(96, 165, 250, 0.65), rgba(45, 212, 191, 0.6));
+        border-radius: 999px;
+        opacity: 0.55;
+        transform: translateY(0.25em);
+      }
       [data-animate] {
         opacity: 1;
         transform: none;
@@ -320,6 +344,18 @@
           transform: translateY(-10px);
         }
       }
+      @keyframes headlineSheen {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        45% {
+          background-position: 100% 50%;
+        }
+        55% {
+          background-position: 80% 50%;
+        }
+      }
       body.is-loading {
         opacity: 0;
       }
@@ -461,7 +497,7 @@
                   Studio tech · 2025
                 </div>
                 <h1 class="mt-6 text-4xl font-display font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                  Diseñamos flujos y copilotos que <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-midnight-300 to-aura-300">encienden tus operaciones</span>
+                  Diseñamos flujos y copilotos que <span class="headline-accent">encienden tus operaciones</span>
                 </h1>
                 <p class="mt-6 max-w-xl text-base text-slate-300 sm:text-lg">
                   Canal Datos combina automatización, ingeniería de datos y capas de IA para que tu compañía tome decisiones con precisión, reduzca tareas manuales y lance experiencias en cuestión de semanas.
@@ -470,7 +506,7 @@
                 <div class="mt-8 flex flex-wrap gap-3">
                   <a
                     href="#galeria"
-                    class="inline-flex items-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-6 py-3 text-sm sm:text-base font-semibold text-slate-950 shadow-glow transition hover:from-midnight-400 hover:to-aura-300"
+                  class="inline-flex items-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-6 py-3 text-sm sm:text-base font-semibold text-white shadow-glow transition hover:from-midnight-400 hover:to-aura-300"
                   >
                     Explorar servicios
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -678,10 +714,65 @@
                   <div class="flex items-center justify-between gap-3">
                     <button
                       type="button"
-                      class="inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white/80 transition hover:bg-white/20"
-                      @click="add(card.name, card.price)"
+                      x-data="addButton(() => add(card.name, card.price), {
+                        idleLabel: 'Añadir',
+                        loadingLabel: 'Sincronizando...',
+                        successLabel: 'Agregado',
+                        loadingDelay: 240,
+                        successDuration: 1600,
+                      })"
+                      @click="handleClick()"
+                      :disabled="state === 'loading'"
+                      :aria-busy="state === 'loading'"
+                      :data-state="state"
+                      class="inline-flex items-center justify-between gap-3 rounded-pill border px-3 py-1.5 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6366f1] disabled:cursor-not-allowed disabled:opacity-70"
+                      :class="
+                        state === 'success'
+                          ? 'border-aura-300/60 bg-aura-400/20 text-aura-100'
+                          : state === 'loading'
+                            ? 'border-white/12 bg-white/8 text-white/60'
+                            : 'border-white/20 bg-white/10 text-white/80 hover:bg-white/20'
+                      "
                     >
-                      Añadir
+                      <span class="inline-flex items-center gap-1.5" aria-live="polite">
+                        <svg
+                          x-cloak
+                          x-show="state === 'loading'"
+                          x-transition.opacity
+                          class="h-3.5 w-3.5 animate-spin text-current"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                          <path class="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+                        </svg>
+                        <svg
+                          x-cloak
+                          x-show="state === 'success'"
+                          x-transition.opacity
+                          class="h-3.5 w-3.5 text-current"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.128 7.128a1 1 0 0 1-1.414 0L3.293 9.964a1 1 0 1 1 1.414-1.414l3.043 3.043 6.421-6.421a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <svg
+                          x-cloak
+                          x-show="state === 'idle'"
+                          x-transition.opacity
+                          class="h-3.5 w-3.5 text-current"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.4"
+                          aria-hidden="true"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12M4 10h12"></path>
+                        </svg>
+                        <span x-text="currentLabel()"></span>
+                      </span>
                       <span class="rounded-pill bg-white/10 px-2 py-0.5 text-[11px] text-white/70">USD <span x-text="card.price"></span></span>
                     </button>
                     <a
@@ -1235,7 +1326,7 @@
                 <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                   <a
                     href="mailto:ezratawachi@gmail.com"
-                    class="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-glow transition hover:from-midnight-400 hover:to-aura-300 sm:w-auto"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-midnight-500 to-aura-400 px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:from-midnight-400 hover:to-aura-300 sm:w-auto"
                   >
                     ✉️ Enviar correo
                   </a>
@@ -1382,17 +1473,52 @@
         ).matches;
         const supportsIntersection = "IntersectionObserver" in window;
 
+        const pendingElements = new Set();
+        const tracked = new WeakSet();
+        let observer = null;
+        let manualCheckActive = false;
+
         const markVisible = (element) => {
           element.classList.add("is-visible");
+          pendingElements.delete(element);
+          if (!pendingElements.size) {
+            stopManualCheck();
+          }
         };
         const isInViewport = (element) => {
           const rect = element.getBoundingClientRect();
           const viewHeight = window.innerHeight || document.documentElement.clientHeight;
-          return rect.top < viewHeight * 0.92 && rect.bottom > 0;
+          return rect.top < viewHeight * 1.02 && rect.bottom > viewHeight * -0.1;
         };
 
-        const tracked = new WeakSet();
-        let observer = null;
+        function manualCheck() {
+          pendingElements.forEach((element) => {
+            if (isInViewport(element)) {
+              markVisible(element);
+              if (observer) {
+                observer.unobserve(element);
+              }
+            }
+          });
+        }
+
+        function startManualCheck() {
+          if (manualCheckActive || !pendingElements.size) {
+            return;
+          }
+          manualCheckActive = true;
+          window.addEventListener("scroll", manualCheck, { passive: true });
+          window.addEventListener("resize", manualCheck);
+        }
+
+        function stopManualCheck() {
+          if (!manualCheckActive) {
+            return;
+          }
+          window.removeEventListener("scroll", manualCheck);
+          window.removeEventListener("resize", manualCheck);
+          manualCheckActive = false;
+        }
 
         const trackElement = (element) => {
           if (!element || tracked.has(element)) {
@@ -1409,10 +1535,16 @@
             markVisible(element);
             return;
           }
-          observer.observe(element);
+          pendingElements.add(element);
+          startManualCheck();
+          if (observer) {
+            observer.observe(element);
+          }
           if (isInViewport(element)) {
             markVisible(element);
-            observer.unobserve(element);
+            if (observer) {
+              observer.unobserve(element);
+            }
           }
         };
 
@@ -1427,13 +1559,14 @@
               });
             },
             {
-              threshold: 0.16,
-              rootMargin: "0px 0px -10% 0px",
+              threshold: 0.1,
+              rootMargin: "0px 0px 0px 0px",
             }
           );
         }
 
         document.querySelectorAll("[data-animate]").forEach(trackElement);
+        manualCheck();
 
         if (prefersReduced || !supportsIntersection) {
           return;
@@ -1453,6 +1586,7 @@
                 .forEach((child) => trackElement(child));
             });
           });
+          manualCheck();
         });
         revealMutationObserver.observe(document.body, {
           childList: true,
@@ -1469,6 +1603,7 @@
                 markVisible(element);
               }
             });
+          manualCheck();
         }, 250);
       }
 
