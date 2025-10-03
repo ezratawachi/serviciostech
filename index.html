@@ -130,6 +130,41 @@
       .animate-floating {
         animation: float 8s ease-in-out infinite;
       }
+      .bg-scene {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(37, 99, 235, 0.18), transparent 65%),
+          radial-gradient(circle at 75% 22%, rgba(16, 185, 129, 0.12), transparent 62%),
+          linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0));
+        background-blend-mode: screen;
+      }
+      .bg-scene::after {
+        content: '';
+        position: absolute;
+        inset: -30% -20% -20% -20%;
+        background:
+          conic-gradient(from 120deg at 48% 38%, rgba(59, 130, 246, 0.36), transparent 70%),
+          radial-gradient(circle at 52% 64%, rgba(15, 118, 110, 0.18), transparent 72%);
+        filter: blur(110px);
+        opacity: 0.35;
+        mix-blend-mode: screen;
+      }
+      .bg-scene canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        mix-blend-mode: lighten;
+        transform: translateZ(0);
+        filter: saturate(115%);
+        transition: opacity 0.4s ease;
+      }
+      .bg-scene.is-static canvas {
+        opacity: 0.85;
+      }
       [data-animate] {
         opacity: 1;
         transform: none;
@@ -171,6 +206,8 @@
         justify-content: center;
         transition: transform 0.25s ease, box-shadow 0.25s ease,
           border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+        will-change: transform, box-shadow, background, border-color;
+        backface-visibility: hidden;
       }
       .add-to-cart-btn::before {
         content: '';
@@ -180,6 +217,12 @@
         opacity: 0;
         transition: opacity 0.25s ease;
         pointer-events: none;
+        border-radius: inherit;
+        will-change: opacity;
+      }
+      .add-to-cart-btn::after {
+        border-radius: inherit;
+        will-change: opacity, transform;
       }
       .add-to-cart-btn:hover::before,
       .add-to-cart-btn:focus-visible::before {
@@ -236,6 +279,7 @@
         inset: -14%;
         background: radial-gradient(circle at center, rgba(255, 255, 255, 0.65), transparent 65%);
         animation: pop 0.75s ease-out forwards;
+        border-radius: inherit;
       }
       @keyframes loadingPulse {
         0%,
@@ -294,6 +338,16 @@
           animation: none !important;
           transition-duration: 0.01ms !important;
         }
+        .bg-scene {
+          background-attachment: initial;
+        }
+        .bg-scene canvas {
+          opacity: 0.65 !important;
+          filter: saturate(105%) !important;
+        }
+        .bg-scene::after {
+          filter: blur(80px) !important;
+        }
       }
       @media (prefers-reduced-motion: reduce) {
         .reveal-ready [data-animate] {
@@ -333,6 +387,9 @@
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased is-loading">
+    <div class="bg-scene" data-bg-scene aria-hidden="true">
+      <canvas data-scene-canvas></canvas>
+    </div>
     <div x-data="site()" x-init="init()" class="min-h-screen flex flex-col">
       <a href="#contenido-principal" class="skip-link"
         >Saltar al contenido principal</a
@@ -626,7 +683,7 @@
                   </div>
                   <a
                     :href="card.href"
-                    class="inline-flex items-center justify-center gap-2 self-stretch rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-brand-700 transition hover:bg-slate-100 hover:text-brand-800 sm:self-auto sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-xs sm:font-semibold sm:text-brand-600 sm:hover:text-brand-700 sm:ml-auto"
+                    class="inline-flex items-center justify-center gap-2 self-stretch rounded-full border border-brand-100 bg-white/80 px-3 py-2 text-sm font-semibold text-brand-700 shadow-sm transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:self-auto sm:ml-auto sm:px-4 sm:py-2"
                   >
                     <span>Ver detalles</span>
                     <svg
@@ -1814,6 +1871,7 @@
       let smoothScrollConfigured = false;
       let revealAnimationsConfigured = false;
       let revealMutationObserver = null;
+      let backgroundMotionConfigured = false;
 
       function addButton(action, options = {}) {
         return {
@@ -2014,6 +2072,400 @@
         }, 1200);
       }
 
+      function setupBackgroundMotion() {
+        if (backgroundMotionConfigured) {
+          return;
+        }
+        backgroundMotionConfigured = true;
+
+        const scene = document.querySelector("[data-bg-scene]");
+        const canvas = scene ? scene.querySelector("[data-scene-canvas]") : null;
+        if (!scene || !canvas) {
+          return;
+        }
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          return;
+        }
+
+        const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const pointerQuery = window.matchMedia("(pointer: fine)");
+
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let shapes = [];
+        let scrollProgress = 0;
+
+        let pointerTargetX = 0;
+        let pointerTargetY = 0;
+        let pointerCurrentX = 0;
+        let pointerCurrentY = 0;
+        let pointerListenersAttached = false;
+        let pendingFrame = null;
+
+        const baseHue = 200 + Math.random() * 60;
+        const palette = [
+          { hue: baseHue, saturation: 72, lightness: 52 },
+          { hue: baseHue - 32, saturation: 68, lightness: 48 },
+          { hue: baseHue + 26, saturation: 64, lightness: 56 },
+          { hue: baseHue - 110, saturation: 56, lightness: 50 },
+          { hue: baseHue + 140, saturation: 62, lightness: 58 },
+        ];
+
+        const hsl = (h, s, l, a = 1) =>
+          `hsla(${Math.round(h)}, ${Math.round(s)}%, ${Math.round(l)}%, ${a})`;
+        const randomFrom = (items) => items[Math.floor(Math.random() * items.length)];
+
+        const createShape = () => {
+          const color = randomFrom(palette);
+          return {
+            baseX: Math.random(),
+            baseY: Math.random(),
+            baseDepth: Math.random(),
+            depthDrift: 0.38 + Math.random() * 1.4,
+            size: 0.18 + Math.random() * 0.28,
+            sides: Math.floor(Math.random() * 3) + 5,
+            rotationSeed: Math.random() * Math.PI * 2,
+            rotationDrift: (Math.random() - 0.5) * 4.4,
+            wobble: 0.5 + Math.random() * 1.1,
+            twist: 0.16 + Math.random() * 0.42,
+            pointerInfluence: 0.4 + Math.random() * 1.1,
+            pointerTilt: 0.2 + Math.random() * 0.45,
+            rippleFrequency: 1.6 + Math.random() * 3.4,
+            rippleStrength: 0.15 + Math.random() * 0.32,
+            phaseOffset: Math.random() * Math.PI * 2,
+            gradientShift: 0.4 + Math.random() * 0.5,
+            blur: 14 + Math.random() * 18,
+            alpha: 0.42 + Math.random() * 0.28,
+            sparkleStrength: 0.24 + Math.random() * 0.32,
+            color,
+          };
+        };
+
+        const rebuildShapes = () => {
+          const desiredCount = width < 560 ? 8 : width < 1024 ? 12 : 16;
+          shapes = Array.from({ length: desiredCount }, createShape);
+        };
+
+        const drawFrame = (freezeMotion = false) => {
+          pendingFrame = null;
+
+          if (!width || !height) {
+            return;
+          }
+
+          const ease = freezeMotion ? 1 : 0.18;
+          pointerCurrentX += (pointerTargetX - pointerCurrentX) * ease;
+          pointerCurrentY += (pointerTargetY - pointerCurrentY) * ease;
+
+          ctx.clearRect(0, 0, width, height);
+
+          const computedShapes = shapes
+            .map((shape) => {
+              const depth =
+                ((shape.baseDepth + scrollProgress * shape.depthDrift) % 1 + 1) % 1;
+              return { shape, depth };
+            })
+            .sort((a, b) => b.depth - a.depth);
+
+          const pointerStrengthX = pointerCurrentX;
+          const pointerStrengthY = pointerCurrentY;
+          const pointerMagnitude =
+            Math.abs(pointerStrengthX) + Math.abs(pointerStrengthY);
+
+          computedShapes.forEach(({ shape, depth }) => {
+            const closeness = 1 - depth;
+            const maxDimension = Math.max(width, height);
+            const radius = maxDimension * shape.size * (0.4 + closeness * 0.82);
+
+            const baseOffsetX = (shape.baseX - 0.5) * width * 1.25;
+            const baseOffsetY = (shape.baseY - 0.5) * height * 1.15;
+
+            const pointerOffsetX =
+              pointerStrengthX * (70 + closeness * 160) * shape.pointerInfluence;
+            const pointerOffsetY =
+              pointerStrengthY * (64 + closeness * 150) * shape.pointerInfluence;
+
+            const scrollOffsetY =
+              (scrollProgress - 0.5) * height * 0.65 * (0.5 + shape.depthDrift * 0.4);
+
+            const wavePhase =
+              scrollProgress * Math.PI * shape.rippleFrequency + shape.phaseOffset;
+            const floatWave = Math.sin(wavePhase) * (9 + closeness * 18) * shape.rippleStrength;
+
+            const x = width * 0.5 + baseOffsetX + pointerOffsetX;
+            const y =
+              height * 0.5 +
+              baseOffsetY -
+              scrollOffsetY +
+              pointerOffsetY +
+              floatWave;
+
+            const rotation =
+              shape.rotationSeed +
+              scrollProgress * shape.rotationDrift +
+              pointerStrengthX * shape.pointerTilt;
+
+            const highlightLightness = Math.min(
+              98,
+              shape.color.lightness + closeness * 26 + pointerOffsetY * 0.02
+            );
+            const midLightness = Math.min(
+              90,
+              shape.color.lightness + closeness * 12
+            );
+            const shadowLightness = Math.max(
+              18,
+              shape.color.lightness - 26 + closeness * 9
+            );
+
+            ctx.save();
+            ctx.translate(x, y);
+
+            const skewX = pointerStrengthY * 0.16 * (0.6 + closeness * 0.8);
+            const skewY = pointerStrengthX * 0.16 * (0.6 + closeness * 0.8);
+            ctx.transform(1, skewX, skewY, 1, 0, 0);
+            ctx.rotate(rotation);
+
+            ctx.beginPath();
+            for (let index = 0; index < shape.sides; index += 1) {
+              const angle = (index / shape.sides) * Math.PI * 2;
+              const distortion =
+                1 +
+                Math.sin(angle * shape.wobble + wavePhase) *
+                  shape.twist *
+                  (0.34 + closeness * 0.75 + pointerMagnitude * 0.16);
+              const px = Math.cos(angle) * radius * distortion;
+              const py =
+                Math.sin(angle) *
+                radius *
+                distortion *
+                (0.86 + closeness * 0.24 - pointerStrengthY * 0.08);
+              if (index === 0) {
+                ctx.moveTo(px, py);
+              } else {
+                ctx.lineTo(px, py);
+              }
+            }
+            ctx.closePath();
+
+            const gradient = ctx.createLinearGradient(
+              -radius,
+              -radius,
+              radius * shape.gradientShift,
+              radius
+            );
+            gradient.addColorStop(
+              0,
+              hsl(
+                shape.color.hue + 10,
+                shape.color.saturation,
+                highlightLightness,
+                0.85
+              )
+            );
+            gradient.addColorStop(
+              0.55,
+              hsl(
+                shape.color.hue,
+                shape.color.saturation,
+                midLightness,
+                0.9
+              )
+            );
+            gradient.addColorStop(
+              1,
+              hsl(
+                shape.color.hue - 18,
+                shape.color.saturation,
+                shadowLightness,
+                0.78
+              )
+            );
+
+            ctx.fillStyle = gradient;
+            ctx.globalAlpha = shape.alpha;
+            ctx.shadowColor = hsl(
+              shape.color.hue,
+              shape.color.saturation,
+              highlightLightness,
+              0.28 + closeness * 0.34
+            );
+            ctx.shadowBlur = shape.blur * (0.22 + closeness * 0.52);
+            ctx.shadowOffsetX = pointerStrengthX * 13 * closeness;
+            ctx.shadowOffsetY = pointerStrengthY * -10 * closeness;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+
+            ctx.lineWidth = 0.45 + closeness * 1.9;
+            ctx.strokeStyle = hsl(
+              shape.color.hue - 20,
+              shape.color.saturation + 8,
+              Math.max(28, midLightness - 18),
+              0.25 + closeness * 0.22
+            );
+            ctx.stroke();
+
+            ctx.save();
+            ctx.globalCompositeOperation = "lighter";
+            ctx.globalAlpha = 0.18 * shape.sparkleStrength;
+            ctx.beginPath();
+            ctx.ellipse(
+              -radius * 0.24,
+              -radius * 0.3,
+              radius * 0.72,
+              radius * 0.48,
+              rotation / 3,
+              0,
+              Math.PI * 2
+            );
+            ctx.fillStyle = hsl(
+              shape.color.hue + 28,
+              shape.color.saturation,
+              Math.min(100, highlightLightness + 10),
+              0.82
+            );
+            ctx.fill();
+            ctx.restore();
+
+            ctx.globalAlpha = 0.1 * shape.sparkleStrength;
+            ctx.beginPath();
+            ctx.arc(radius * 0.38, radius * 0.18, radius * 0.26, 0, Math.PI * 2);
+            ctx.fillStyle = hsl(
+              shape.color.hue - 30,
+              shape.color.saturation,
+              shadowLightness - 6,
+              0.88
+            );
+            ctx.fill();
+            ctx.globalAlpha = 1;
+
+            ctx.restore();
+          });
+
+          if (!freezeMotion) {
+            const pointerDelta =
+              Math.abs(pointerTargetX - pointerCurrentX) +
+              Math.abs(pointerTargetY - pointerCurrentY);
+            if (pointerDelta > 0.006) {
+              requestDraw();
+            }
+          }
+        };
+
+        const requestDraw = () => {
+          if (motionQuery.matches) {
+            drawFrame(true);
+            return;
+          }
+          if (pendingFrame === null) {
+            pendingFrame = window.requestAnimationFrame(() => drawFrame(false));
+          }
+        };
+
+        const handlePointerMove = (event) => {
+          pointerTargetX = event.clientX / window.innerWidth - 0.5;
+          pointerTargetY = event.clientY / window.innerHeight - 0.5;
+          requestDraw();
+        };
+
+        const handlePointerLeave = () => {
+          pointerTargetX = 0;
+          pointerTargetY = 0;
+          requestDraw();
+        };
+
+        const attachPointerListeners = () => {
+          if (pointerListenersAttached || !pointerQuery.matches) {
+            return;
+          }
+          window.addEventListener("pointermove", handlePointerMove, { passive: true });
+          window.addEventListener("pointerleave", handlePointerLeave, { passive: true });
+          pointerListenersAttached = true;
+        };
+
+        const detachPointerListeners = () => {
+          if (!pointerListenersAttached) {
+            return;
+          }
+          window.removeEventListener("pointermove", handlePointerMove);
+          window.removeEventListener("pointerleave", handlePointerLeave);
+          pointerListenersAttached = false;
+          handlePointerLeave();
+        };
+
+        const handlePointerCapabilityChange = () => {
+          if (pointerQuery.matches) {
+            attachPointerListeners();
+          } else {
+            detachPointerListeners();
+          }
+          requestDraw();
+        };
+
+        const updateScrollProgress = () => {
+          const docHeight =
+            document.body.scrollHeight -
+            (window.innerHeight || document.documentElement.clientHeight);
+          scrollProgress = docHeight > 0
+            ? (window.scrollY || window.pageYOffset) / docHeight
+            : 0;
+          requestDraw();
+        };
+
+        const resizeCanvas = () => {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          dpr = Math.min(1.2, window.devicePixelRatio || 1);
+          canvas.width = Math.round(width * dpr);
+          canvas.height = Math.round(height * dpr);
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          rebuildShapes();
+          requestDraw();
+        };
+
+        const updateMotionState = () => {
+          if (pendingFrame !== null && motionQuery.matches) {
+            window.cancelAnimationFrame(pendingFrame);
+            pendingFrame = null;
+          }
+
+          if (motionQuery.matches) {
+            scene.classList.add("is-static");
+            detachPointerListeners();
+            drawFrame(true);
+          } else {
+            scene.classList.remove("is-static");
+            handlePointerCapabilityChange();
+            requestDraw();
+          }
+        };
+
+        if (typeof motionQuery.addEventListener === "function") {
+          motionQuery.addEventListener("change", updateMotionState);
+        } else if (typeof motionQuery.addListener === "function") {
+          motionQuery.addListener(updateMotionState);
+        }
+
+        if (typeof pointerQuery.addEventListener === "function") {
+          pointerQuery.addEventListener("change", handlePointerCapabilityChange);
+        } else if (typeof pointerQuery.addListener === "function") {
+          pointerQuery.addListener(handlePointerCapabilityChange);
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+        window.addEventListener("scroll", updateScrollProgress, { passive: true });
+
+        resizeCanvas();
+        updateScrollProgress();
+        updateMotionState();
+      }
+
       function site() {
         const storageKey = "ezraServicesCart";
         return {
@@ -2103,6 +2555,7 @@
             });
             setupSmoothScroll();
             setupRevealAnimations();
+            setupBackgroundMotion();
           },
           toggleMenu() {
             this.open = !this.open;
